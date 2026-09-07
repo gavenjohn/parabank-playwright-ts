@@ -22,6 +22,15 @@ jobs:
       - run: docker compose up -d
       - run: bash scripts/wait-for-parabank.sh
 
+      # The homepage renders as soon as Tomcat deploys the WAR, but the in-process
+      # HSQLDB instance takes longer. A fixed wait is normally the wrong instinct;
+      # for one-time environment startup, as opposed to inside a test, it is the
+      # honest tool.
+      - run: sleep 45
+      - name: ParaBank logs
+        if: always()
+        run: docker compose logs parabank
+
       # The container ships with an empty database. Registration writes to it and
       # returns a 500 until it has been initialised. Locally this was done once by
       # clicking Initialize on the admin page; CI needs it as an explicit step.
