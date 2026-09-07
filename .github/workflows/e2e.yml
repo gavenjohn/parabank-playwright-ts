@@ -22,6 +22,11 @@ jobs:
       - run: docker compose up -d
       - run: bash scripts/wait-for-parabank.sh
 
+      # The container ships with an empty database. Registration writes to it and
+      # returns a 500 until it has been initialised. Locally this was done once by
+      # clicking Initialize on the admin page; CI needs it as an explicit step.
+      - run: curl -fsS -X POST -d "action=INIT" http://localhost:8080/parabank/db.htm
+
       - run: npx playwright test
         env:
           BASE_URL: http://localhost:8080
