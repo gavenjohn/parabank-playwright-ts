@@ -1,9 +1,6 @@
-import { test, expect, type Page } from '@playwright/test';
+import { test, expect } from '../../src/fixtures/test-fixtures';
+import { type Page } from '@playwright/test';
 
-const USER = 'gaven_demo';
-const PASS = 'Test1234';
-const FROM = '13566';
-const TO = '13677';
 const AMOUNT = 100;
 
 async function balanceOf(page: Page, accountNumber: string): Promise<number> {
@@ -12,30 +9,42 @@ async function balanceOf(page: Page, accountNumber: string): Promise<number> {
   return Number(balanceText?.replace(/[^0-9.-]/g, ''));
 }
 
-test('a transfer moves the exact amount between two accounts', async ({ page }) => {
-  await page.goto('/parabank/index.htm');
-  await page.locator('input[name="username"]').fill(USER);
-  await page.locator('input[name="password"]').fill(PASS);
-  await page.getByRole('button', { name: 'Log In' }).click();
+test('a transfer moves the exact amount between two accounts', async ({ authedPage: page }) => {
+  // A new customer has exactly one account, so there is nothing to transfer to.
+  // Reading the account numbers rather than hard-coding them is what makes this
+  // test survive a fresh database - the old version assumed 13566 and 13677.
+  const fromCell = page.getByRole('row').nth(1).getByRole('cell').first();
+  await expect(fromCell).toHaveText(/\d+/);
+  const from = await fromCell.textContent();
+  expect(from).toBeTruthy();
 
-  // Read balances first. Asserting against hard-coded figures would break as
-  // soon as any other test moves money on this customer.
+  await page.getByRole('link', { name: 'Open New Account' }).click();
+  await page.locator('#type').selectOption('1');
+  await page.getByRole('button', { name: 'Open New Account' }).click();
+
+  // Wait for the element to actually have text. A bare textContent() can fire
+  // before the value is populated and silently return "".
+  const newAccount = page.locator('#newAccountId');
+  await expect(newAccount).toHaveText(/\d+/);
+  const to = await newAccount.textContent();
+  expect(to).toBeTruthy();
+
   await page.getByRole('link', { name: 'Accounts Overview' }).click();
-  const fromBefore = await balanceOf(page, FROM);
-  const toBefore = await balanceOf(page, TO);
+  const fromBefore = await balanceOf(page, from!);
+  const toBefore = await balanceOf(page, to!);
 
   await page.getByRole('link', { name: 'Transfer Funds' }).click();
   await page.locator('#amount').fill(String(AMOUNT));
-  await page.locator('#fromAccountId').selectOption(FROM); // never rely on the default
-  await page.locator('#toAccountId').selectOption(TO);
+  await page.locator('#fromAccountId').selectOption(from!);
+  await page.locator('#toAccountId').selectOption(to!);
   await page.getByRole('button', { name: 'Transfer' }).click();
 
   await expect(page.getByRole('heading', { name: 'Transfer Complete!' })).toBeVisible();
 
-  // The actual point of this test. "Transfer Complete!" appearing while the
-  // money did not move is precisely the defect a bank cares about, and a
-  // success-message assertion alone would pass straight through it.
+  // "Transfer Complete!" appearing while the money did not move is precisely the
+  // defect a bank cares about, and a success-message assertion alone passes right
+  // through it.
   await page.getByRole('link', { name: 'Accounts Overview' }).click();
-  expect(await balanceOf(page, FROM)).toBe(fromBefore - AMOUNT);
-  expect(await balanceOf(page, TO)).toBe(toBefore + AMOUNT);
+  expect(await balanceOf(page, from!)).toBe(fromBefore - AMOUNT);
+  expect(await balanceOf(page, to!)).toBe(toBefore + AMOUNT);
 });
