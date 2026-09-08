@@ -24,6 +24,23 @@ for a username that has never been used. The customer is not created.
 
 The limit is 20 inclusive; 21 is the first failing length.
 
+## Root cause
+
+Confirmed from the application's own DDL, which ships inside the image at
+`WEB-INF/classes/com/parasoft/parabank/dao/jdbc/sql/create.sql`:
+
+```sql
+username VARCHAR(20) NOT NULL,
+...
+UNIQUE (username)
+```
+
+The column is `VARCHAR(20)` and carries the `UNIQUE` constraint. An over-length
+username fails at the database, and the handler reports that failure using the
+message for the constraint it expected to be violated rather than the one that
+actually was. The boundary found by varying input length matches the declared
+column width exactly.
+
 ## What was ruled out
 - **Wrong field names** — the form echoes every submitted value back correctly.
 - **Missing session** — `JSESSIONID` present and shared between GET and POST.

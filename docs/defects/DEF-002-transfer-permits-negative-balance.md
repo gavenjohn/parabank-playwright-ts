@@ -4,6 +4,17 @@
 **Found:** while building the funds-transfer test
 **Environment:** parasoft/parabank:latest, local Docker, Min. Balance $0.00
 
+## Preconditions
+
+Min. Balance must be set to $0.00 on `/parabank/admin.htm` and saved. This is **not**
+the default: a freshly initialised database seeds `minimumBalance` at $100.00 from the
+image's own `insert.sql`. The setting is what makes the result unambiguous - at $0.00
+the resulting balance of -$84.50 is below the configured minimum on any reading, with
+no argument that the account was merely dipping into a permitted buffer.
+
+Note that the suite's `globalSetup` reinitialises the database on every run, so this
+setting must be reapplied after running the tests in order to reproduce.
+
 ## Steps
 1. Register a new customer. The initial account (14787) opens with $515.50.
 2. Open a second account (15675) with an opening balance of $0.00.
