@@ -16,6 +16,10 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
 
+      # Typecheck before spending time on browsers and containers, so a type
+      # error fails in seconds rather than after the whole suite has run.
+      - run: npm run typecheck
+
       # Start the application under test inside the pipeline, so the suite does
       # not depend on the shared public ParaBank instance that other people's
       # test data would break.

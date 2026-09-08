@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
     "target": "ES2021",
-    "lib": ["ES2021"],
+    // DOM is needed even though no code here touches the DOM directly: Playwright's
+    // locator types reference HTMLElement and SVGElement, because evaluate() runs in
+    // the browser. Without it, tsc fails inside node_modules rather than on our code.
+    "lib": ["ES2021", "DOM"],
     "module": "commonjs",
     "strict": true,
     "types": ["node"]
