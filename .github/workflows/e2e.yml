@@ -26,21 +26,29 @@ jobs:
       # HSQLDB instance takes longer. A fixed wait is normally the wrong instinct;
       # for one-time environment startup, as opposed to inside a test, it is the
       # honest tool.
-      - run: sleep 45
-      - name: ParaBank logs
-        if: always()
-        run: docker compose logs parabank
+      
 
-      # The container ships with an empty database. Registration writes to it and
-      # returns a 500 until it has been initialised. Locally this was done once by
-      # clicking Initialize on the admin page; CI needs it as an explicit step.
-      - run: curl -fsS -X POST -d "action=INIT" http://localhost:8080/parabank/db.htm
+      - name: Initialise the ParaBank database
+        run: |
+          # db.htm is the first stateful request the container sees in CI. Loading
+          # the admin page first establishes the session it binds against - the
+          # same requirement register.htm has.
+          curl -fsS -c cookies.txt http://localhost:8080/parabank/admin.htm > /dev/null
+          curl -v -fsS -b cookies.txt -X POST -d "action=INIT" http://localhost:8080/parabank/db.htm
 
       - run: npx playwright test
         env:
           BASE_URL: http://localhost:8080
 
-      # if: always() - the report is most useful precisely when the run failed
+      # if: always() - these are most useful precisely when the run failed
+      - name: ParaBank container logs
+        if: always()
+        run: docker compose logs --no-color parabank
+
+      - name: Tomcat logs from inside the container
+        if: always()
+        run: docker compose exec -T parabank sh -c 'cat /usr/local/tomcat/logs/*.log 2>/dev/null || find / -name "catalina*.log" -o -name "*.log" -path "*tomcat*" 2>/dev/null | head -20'
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
