@@ -1,6 +1,6 @@
 services:
   parabank:
-    image: parasoft/parabank:latest
+    image: parasoft/parabank@sha256:747453a0c00b52ed36c7c55aa842a6e9e4a761f70ad577ec07b1f6cbee77e0e5 
     container_name: parabank
     ports:
       - "8080:8080"
