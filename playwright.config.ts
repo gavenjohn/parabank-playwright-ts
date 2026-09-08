@@ -2,6 +2,9 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
+  // Creates the ParaBank database schema, which the image does not ship with.
+  // Runs for local and CI runs alike, so the two cannot drift apart.
+  globalSetup: './src/setup/global-setup.ts',
   fullyParallel: true,
   workers: 1,  // ParaBank serves one customer's account list to every test, and all
                // tests currently log in as the same hard-coded user. Running in

@@ -21,15 +21,10 @@ jobs:
       # test data would break.
       - run: docker compose up -d
       - run: bash scripts/wait-for-parabank.sh
-  
-       
-      # The image ships with an empty schema - the Parameter table does not exist
-      # until this runs, and every page that reads it returns 500. Locally this
-      # was done once by clicking Initialize on the admin page.
-      # -f is omitted deliberately: db.htm returns a non-2xx status even on
-      # success, so failing the step on it would be wrong.
-      - run: curl -sS -X POST -d "action=INIT" http://localhost:8080/parabank/db.htm -o /dev/null -w "init returned %{http_code}\n"
 
+      # No database-init step here on purpose. Creating the schema is the
+      # suite's globalSetup, so it happens on a local run too - a CI-only
+      # step is what let local and CI drift apart in the first place.
       - run: npx playwright test
         env:
           BASE_URL: http://localhost:8080
