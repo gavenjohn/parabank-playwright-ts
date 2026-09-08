@@ -21,20 +21,14 @@ jobs:
       # test data would break.
       - run: docker compose up -d
       - run: bash scripts/wait-for-parabank.sh
-
-      # The homepage renders as soon as Tomcat deploys the WAR, but the in-process
-      # HSQLDB instance takes longer. A fixed wait is normally the wrong instinct;
-      # for one-time environment startup, as opposed to inside a test, it is the
-      # honest tool.
-      
-
-      - name: Initialise the ParaBank database
-        run: |
-          # db.htm is the first stateful request the container sees in CI. Loading
-          # the admin page first establishes the session it binds against - the
-          # same requirement register.htm has.
-          curl -fsS -c cookies.txt http://localhost:8080/parabank/admin.htm > /dev/null
-          curl -v -fsS -b cookies.txt -X POST -d "action=INIT" http://localhost:8080/parabank/db.htm
+  
+       
+      # The image ships with an empty schema - the Parameter table does not exist
+      # until this runs, and every page that reads it returns 500. Locally this
+      # was done once by clicking Initialize on the admin page.
+      # -f is omitted deliberately: db.htm returns a non-2xx status even on
+      # success, so failing the step on it would be wrong.
+      - run: curl -sS -X POST -d "action=INIT" http://localhost:8080/parabank/db.htm -o /dev/null -w "init returned %{http_code}\n"
 
       - run: npx playwright test
         env:
