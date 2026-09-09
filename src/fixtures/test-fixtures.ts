@@ -1,9 +1,17 @@
 import { test as base, expect, type Page } from '@playwright/test';
 import { newCustomer, type Customer } from '../data/customer-factory';
+import { LoginPage } from '../pages/login.page';
+import { AccountsOverviewPage } from '../pages/accounts-overview.page';
+import { OpenAccountPage } from '../pages/open-account.page';
+import { TransferPage } from '../pages/transfer.page';
 
 type Fixtures = {
   registeredCustomer: Customer;
   authedPage: Page;
+  loginPage: LoginPage;
+  accountsOverviewPage: AccountsOverviewPage;
+  openAccountPage: OpenAccountPage;
+  transferPage: TransferPage;
 };
 
 export const test = base.extend<Fixtures>({
@@ -29,24 +37,28 @@ export const test = base.extend<Fixtures>({
         'customer.ssn': customer.ssn,
         'customer.username': customer.username,
         'customer.password': customer.password,
-        'repeatedPassword': customer.password,
+        repeatedPassword: customer.password,
       },
     });
 
     // ParaBank returns 200 on failure too, so the status alone proves nothing -
     // the success text is the only reliable signal. See DEF-001.
     const body = await response.text();
-    expect(body, 'registration was rejected - check username length, see DEF-001')
-      .toContain('Your account was created successfully');
+    expect(body, 'registration was rejected - see DEF-001').toContain(
+      'Your account was created successfully',
+    );
 
     await use(customer);
   },
 
-  authedPage: async ({ page, registeredCustomer }, use) => {
-    await page.goto('/parabank/index.htm');
-    await page.locator('input[name="username"]').fill(registeredCustomer.username);
-    await page.locator('input[name="password"]').fill(registeredCustomer.password);
-    await page.locator('input[type="submit"]').click();
+  loginPage: async ({ page }, use) => use(new LoginPage(page)),
+  accountsOverviewPage: async ({ page }, use) => use(new AccountsOverviewPage(page)),
+  openAccountPage: async ({ page }, use) => use(new OpenAccountPage(page)),
+  transferPage: async ({ page }, use) => use(new TransferPage(page)),
+
+  authedPage: async ({ page, registeredCustomer, loginPage }, use) => {
+    await loginPage.goto();
+    await loginPage.login(registeredCustomer.username, registeredCustomer.password);
     await expect(page.getByRole('heading', { name: 'Accounts Overview' })).toBeVisible();
     await use(page);
   },
