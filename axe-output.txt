@@ -1,0 +1,1958 @@
+﻿
+Running 2 tests using 1 worker
+
+  Γ£ÿ  1 [chromium] ΓÇ║ tests\a11y\accessibility.spec.ts:5:7 ΓÇ║ Accessibility ΓÇ║ login page has no serious or critical violations (1.2s)
+  Γ£ÿ  2 [chromium] ΓÇ║ tests\a11y\accessibility.spec.ts:11:7 ΓÇ║ Accessibility ΓÇ║ accounts overview has no serious or critical violations (1.5s)
+
+
+  1) [chromium] ΓÇ║ tests\a11y\accessibility.spec.ts:5:7 ΓÇ║ Accessibility ΓÇ║ login page has no serious or critical violations 
+
+    Error: [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#828282",
+                  "bgColor": "#ffffff",
+                  "contrastRatio": 3.84,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<p class=\"caption\">Experience the difference</p>",
+                    "target": [
+                      ".caption"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 3.84 (foreground color: #828282, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<p class=\"caption\">Experience the difference</p>",
+            "target": [
+              ".caption"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.84 (foreground color: #828282, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#ac9601",
+                  "bgColor": "#ffffff",
+                  "contrastRatio": 2.95,
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "bold",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<li class=\"captionone\">ATM Services</li>",
+                    "target": [
+                      ".captionone"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 2.95 (foreground color: #ac9601, background color: #ffffff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<li class=\"captionone\">ATM Services</li>",
+            "target": [
+              ".captionone"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.95 (foreground color: #ac9601, background color: #ffffff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#ac9601",
+                  "bgColor": "#ffffff",
+                  "contrastRatio": 2.95,
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "bold",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<li class=\"captiontwo\">Online Services</li>",
+                    "target": [
+                      ".captiontwo"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 2.95 (foreground color: #ac9601, background color: #ffffff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<li class=\"captiontwo\">Online Services</li>",
+            "target": [
+              ".captiontwo"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.95 (foreground color: #ac9601, background color: #ffffff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#ac9601",
+                  "bgColor": "#ffffff",
+                  "contrastRatio": 2.95,
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "bold",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<li class=\"captionthree\">09/09/2026</li>",
+                    "target": [
+                      ".captionthree"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 2.95 (foreground color: #ac9601, background color: #ffffff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<li class=\"captionthree\">09/09/2026</li>",
+            "target": [
+              ".captionthree"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.95 (foreground color: #ac9601, background color: #ffffff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#007163",
+                  "bgColor": "#c7d5e4",
+                  "contrastRatio": 3.97,
+                  "fontSize": "7.5pt (10px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<ul class=\"visit\">\n      <li>Visit us at:</li>\n      <li><a href=\"http://www.parasoft.com/\" target=\"_blank\">www.parasoft.com</a></li>\n    </ul>",
+                    "target": [
+                      ".visit"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 3.97 (foreground color: #007163, background color: #c7d5e4, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<li>Visit us at:</li>",
+            "target": [
+              ".visit > li:nth-child(1)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.97 (foreground color: #007163, background color: #c7d5e4, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#007163",
+                  "bgColor": "#c7d5e4",
+                  "contrastRatio": 3.97,
+                  "fontSize": "7.5pt (10px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<a href=\"http://www.parasoft.com/\" target=\"_blank\">www.parasoft.com</a>",
+                    "target": [
+                      "li:nth-child(2) > a[href$=\"parasoft.com/\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 3.97 (foreground color: #007163, background color: #c7d5e4, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<a href=\"http://www.parasoft.com/\" target=\"_blank\">www.parasoft.com</a>",
+            "target": [
+              "li:nth-child(2) > a[href$=\"parasoft.com/\"]"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.97 (foreground color: #007163, background color: #c7d5e4, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      },
+      {
+        "id": "html-has-lang",
+        "impact": "serious",
+        "tags": [
+          "cat.language",
+          "wcag2a",
+          "wcag311",
+          "TTv5",
+          "TT11.a",
+          "EN-301-549",
+          "EN-9.3.1.1",
+          "ACT",
+          "RGAAv4",
+          "RGAA-8.3.1"
+        ],
+        "description": "Ensure every HTML document has a lang attribute",
+        "help": "<html> element must have a lang attribute",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/html-has-lang?application=playwright",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "has-lang",
+                "data": {
+                  "messageKey": "noLang"
+                },
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "The <html> element does not have a lang attribute"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<html>",
+            "target": [
+              "html"
+            ],
+            "failureSummary": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+          }
+        ]
+      },
+      {
+        "id": "image-alt",
+        "impact": "critical",
+        "tags": [
+          "cat.text-alternatives",
+          "wcag2a",
+          "wcag111",
+          "section508",
+          "section508.22.a",
+          "TTv5",
+          "TT7.a",
+          "TT7.b",
+          "EN-301-549",
+          "EN-9.1.1.1",
+          "ACT",
+          "RGAAv4",
+          "RGAA-1.1.1"
+        ],
+        "description": "Ensure <img> elements have alternative text or a role of none or presentation",
+        "help": "Images must have alternative text",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/image-alt?application=playwright",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "has-alt",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element does not have an alt attribute"
+              },
+              {
+                "id": "aria-label",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "aria-label attribute does not exist or is empty"
+              },
+              {
+                "id": "aria-labelledby",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+              },
+              {
+                "id": "non-empty-title",
+                "data": {
+                  "messageKey": "noAttr"
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element has no title attribute"
+              },
+              {
+                "id": "presentational-role",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "critical",
+            "html": "<img src=\"images/clear.gif;jsessionid=4D471238F6992412FAABEA1F6B4CE434\" width=\"56\" height=\"42\" border=\"0\" class=\"admin\">",
+            "target": [
+              ".admin"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+          }
+        ]
+      },
+      {
+        "id": "label",
+        "impact": "critical",
+        "tags": [
+          "cat.forms",
+          "wcag2a",
+          "wcag412",
+          "section508",
+          "section508.22.n",
+          "TTv5",
+          "TT5.c",
+          "EN-301-549",
+          "EN-9.4.1.2",
+          "ACT",
+          "RGAAv4",
+          "RGAA-11.1.1"
+        ],
+        "description": "Ensure every form element has a label",
+        "help": "Form elements must have labels",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/label?application=playwright",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "implicit-label",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element does not have an implicit (wrapped) <label>"
+              },
+              {
+                "id": "explicit-label",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element does not have an explicit <label>"
+              },
+              {
+                "id": "aria-label",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "aria-label attribute does not exist or is empty"
+              },
+              {
+                "id": "aria-labelledby",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+              },
+              {
+                "id": "non-empty-title",
+                "data": {
+                  "messageKey": "noAttr"
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element has no title attribute"
+              },
+              {
+                "id": "non-empty-placeholder",
+                "data": {
+                  "messageKey": "noAttr"
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element has no placeholder attribute"
+              },
+              {
+                "id": "presentational-role",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "critical",
+            "html": "<input type=\"text\" class=\"input\" name=\"username\">",
+            "target": [
+              "input[type=\"text\"]"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+          },
+          {
+            "any": [
+              {
+                "id": "implicit-label",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element does not have an implicit (wrapped) <label>"
+              },
+              {
+                "id": "explicit-label",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element does not have an explicit <label>"
+              },
+              {
+                "id": "aria-label",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "aria-label attribute does not exist or is empty"
+              },
+              {
+                "id": "aria-labelledby",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+              },
+              {
+                "id": "non-empty-title",
+                "data": {
+                  "messageKey": "noAttr"
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element has no title attribute"
+              },
+              {
+                "id": "non-empty-placeholder",
+                "data": {
+                  "messageKey": "noAttr"
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element has no placeholder attribute"
+              },
+              {
+                "id": "presentational-role",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "critical",
+            "html": "<input type=\"password\" class=\"input\" name=\"password\">",
+            "target": [
+              "input[type=\"password\"]"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+          }
+        ]
+      },
+      {
+        "id": "link-name",
+        "impact": "serious",
+        "tags": [
+          "cat.name-role-value",
+          "wcag2a",
+          "wcag244",
+          "wcag412",
+          "section508",
+          "section508.22.a",
+          "TTv5",
+          "TT6.a",
+          "EN-301-549",
+          "EN-9.2.4.4",
+          "EN-9.4.1.2",
+          "ACT",
+          "RGAAv4",
+          "RGAA-6.2.1"
+        ],
+        "description": "Ensure links have discernible text",
+        "help": "Links must have discernible text",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/link-name?application=playwright",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "has-visible-text",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Element does not have text that is visible to screen readers"
+              },
+              {
+                "id": "aria-label",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "aria-label attribute does not exist or is empty"
+              },
+              {
+                "id": "aria-labelledby",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+              },
+              {
+                "id": "non-empty-title",
+                "data": {
+                  "messageKey": "noAttr"
+                },
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Element has no title attribute"
+              }
+            ],
+            "all": [],
+            "none": [
+              {
+                "id": "focusable-no-name",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Element is in tab order and does not have accessible text"
+              }
+            ],
+            "impact": "serious",
+            "html": "<a href=\"admin.htm;jsessionid=4D471238F6992412FAABEA1F6B4CE434\"><img src=\"images/clear.gif;jsessionid=4D471238F6992412FAABEA1F6B4CE434\" width=\"56\" height=\"42\" border=\"0\" class=\"admin\"></a>",
+            "target": [
+              "#topPanel > a:nth-child(1)"
+            ],
+            "failureSummary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+          }
+        ]
+      }
+    ]
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -   1
+    + Received  + 606
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+    +     "help": "Elements must meet minimum color contrast ratio thresholds",
+    +     "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+    +     "id": "color-contrast",
+    +     "impact": "serious",
+    +     "nodes": Array [
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": Object {
+    +               "bgColor": "#ffffff",
+    +               "contrastRatio": 3.84,
+    +               "expectedContrastRatio": "4.5:1",
+    +               "fgColor": "#828282",
+    +               "fontSize": "9.8pt (13px)",
+    +               "fontWeight": "normal",
+    +               "messageKey": null,
+    +             },
+    +             "id": "color-contrast",
+    +             "impact": "serious",
+    +             "message": "Element has insufficient color contrast of 3.84 (foreground color: #828282, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +             "relatedNodes": Array [
+    +               Object {
+    +                 "html": "<p class=\"caption\">Experience the difference</p>",
+    +                 "target": Array [
+    +                   ".caption",
+    +                 ],
+    +               },
+    +             ],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix any of the following:
+    +   Element has insufficient color contrast of 3.84 (foreground color: #828282, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "html": "<p class=\"caption\">Experience the difference</p>",
+    +         "impact": "serious",
+    +         "none": Array [],
+    +         "target": Array [
+    +           ".caption",
+    +         ],
+    +       },
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": Object {
+    +               "bgColor": "#ffffff",
+    +               "contrastRatio": 2.95,
+    +               "expectedContrastRatio": "4.5:1",
+    +               "fgColor": "#ac9601",
+    +               "fontSize": "9.0pt (12px)",
+    +               "fontWeight": "bold",
+    +               "messageKey": null,
+    +             },
+    +             "id": "color-contrast",
+    +             "impact": "serious",
+    +             "message": "Element has insufficient color contrast of 2.95 (foreground color: #ac9601, background color: #ffffff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1",
+    +             "relatedNodes": Array [
+    +               Object {
+    +                 "html": "<li class=\"captionone\">ATM Services</li>",
+    +                 "target": Array [
+    +                   ".captionone",
+    +                 ],
+    +               },
+    +             ],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix any of the following:
+    +   Element has insufficient color contrast of 2.95 (foreground color: #ac9601, background color: #ffffff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1",
+    +         "html": "<li class=\"captionone\">ATM Services</li>",
+    +         "impact": "serious",
+    +         "none": Array [],
+    +         "target": Array [
+    +           ".captionone",
+    +         ],
+    +       },
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": Object {
+    +               "bgColor": "#ffffff",
+    +               "contrastRatio": 2.95,
+    +               "expectedContrastRatio": "4.5:1",
+    +               "fgColor": "#ac9601",
+    +               "fontSize": "9.0pt (12px)",
+    +               "fontWeight": "bold",
+    +               "messageKey": null,
+    +             },
+    +             "id": "color-contrast",
+    +             "impact": "serious",
+    +             "message": "Element has insufficient color contrast of 2.95 (foreground color: #ac9601, background color: #ffffff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1",
+    +             "relatedNodes": Array [
+    +               Object {
+    +                 "html": "<li class=\"captiontwo\">Online Services</li>",
+    +                 "target": Array [
+    +                   ".captiontwo",
+    +                 ],
+    +               },
+    +             ],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix any of the following:
+    +   Element has insufficient color contrast of 2.95 (foreground color: #ac9601, background color: #ffffff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1",
+    +         "html": "<li class=\"captiontwo\">Online Services</li>",
+    +         "impact": "serious",
+    +         "none": Array [],
+    +         "target": Array [
+    +           ".captiontwo",
+    +         ],
+    +       },
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": Object {
+    +               "bgColor": "#ffffff",
+    +               "contrastRatio": 2.95,
+    +               "expectedContrastRatio": "4.5:1",
+    +               "fgColor": "#ac9601",
+    +               "fontSize": "9.0pt (12px)",
+    +               "fontWeight": "bold",
+    +               "messageKey": null,
+    +             },
+    +             "id": "color-contrast",
+    +             "impact": "serious",
+    +             "message": "Element has insufficient color contrast of 2.95 (foreground color: #ac9601, background color: #ffffff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1",
+    +             "relatedNodes": Array [
+    +               Object {
+    +                 "html": "<li class=\"captionthree\">09/09/2026</li>",
+    +                 "target": Array [
+    +                   ".captionthree",
+    +                 ],
+    +               },
+    +             ],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix any of the following:
+    +   Element has insufficient color contrast of 2.95 (foreground color: #ac9601, background color: #ffffff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1",
+    +         "html": "<li class=\"captionthree\">09/09/2026</li>",
+    +         "impact": "serious",
+    +         "none": Array [],
+    +         "target": Array [
+    +           ".captionthree",
+    +         ],
+    +       },
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": Object {
+    +               "bgColor": "#c7d5e4",
+    +               "contrastRatio": 3.97,
+    +               "expectedContrastRatio": "4.5:1",
+    +               "fgColor": "#007163",
+    +               "fontSize": "7.5pt (10px)",
+    +               "fontWeight": "normal",
+    +               "messageKey": null,
+    +             },
+    +             "id": "color-contrast",
+    +             "impact": "serious",
+    +             "message": "Element has insufficient color contrast of 3.97 (foreground color: #007163, background color: #c7d5e4, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +             "relatedNodes": Array [
+    +               Object {
+    +                 "html": "<ul class=\"visit\">
+    +       <li>Visit us at:</li>
+    +       <li><a href=\"http://www.parasoft.com/\" target=\"_blank\">www.parasoft.com</a></li>
+    +     </ul>",
+    +                 "target": Array [
+    +                   ".visit",
+    +                 ],
+    +               },
+    +             ],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix any of the following:
+    +   Element has insufficient color contrast of 3.97 (foreground color: #007163, background color: #c7d5e4, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "html": "<li>Visit us at:</li>",
+    +         "impact": "serious",
+    +         "none": Array [],
+    +         "target": Array [
+    +           ".visit > li:nth-child(1)",
+    +         ],
+    +       },
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": Object {
+    +               "bgColor": "#c7d5e4",
+    +               "contrastRatio": 3.97,
+    +               "expectedContrastRatio": "4.5:1",
+    +               "fgColor": "#007163",
+    +               "fontSize": "7.5pt (10px)",
+    +               "fontWeight": "normal",
+    +               "messageKey": null,
+    +             },
+    +             "id": "color-contrast",
+    +             "impact": "serious",
+    +             "message": "Element has insufficient color contrast of 3.97 (foreground color: #007163, background color: #c7d5e4, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +             "relatedNodes": Array [
+    +               Object {
+    +                 "html": "<a href=\"http://www.parasoft.com/\" target=\"_blank\">www.parasoft.com</a>",
+    +                 "target": Array [
+    +                   "li:nth-child(2) > a[href$=\"parasoft.com/\"]",
+    +                 ],
+    +               },
+    +             ],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix any of the following:
+    +   Element has insufficient color contrast of 3.97 (foreground color: #007163, background color: #c7d5e4, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "html": "<a href=\"http://www.parasoft.com/\" target=\"_blank\">www.parasoft.com</a>",
+    +         "impact": "serious",
+    +         "none": Array [],
+    +         "target": Array [
+    +           "li:nth-child(2) > a[href$=\"parasoft.com/\"]",
+    +         ],
+    +       },
+    +     ],
+    +     "tags": Array [
+    +       "cat.color",
+    +       "wcag2aa",
+    +       "wcag143",
+    +       "TTv5",
+    +       "TT13.c",
+    +       "EN-301-549",
+    +       "EN-9.1.4.3",
+    +       "ACT",
+    +       "RGAAv4",
+    +       "RGAA-3.2.1",
+    +     ],
+    +   },
+    +   Object {
+    +     "description": "Ensure every HTML document has a lang attribute",
+    +     "help": "<html> element must have a lang attribute",
+    +     "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/html-has-lang?application=playwright",
+    +     "id": "html-has-lang",
+    +     "impact": "serious",
+    +     "nodes": Array [
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": Object {
+    +               "messageKey": "noLang",
+    +             },
+    +             "id": "has-lang",
+    +             "impact": "serious",
+    +             "message": "The <html> element does not have a lang attribute",
+    +             "relatedNodes": Array [],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix any of the following:
+    +   The <html> element does not have a lang attribute",
+    +         "html": "<html>",
+    +         "impact": "serious",
+    +         "none": Array [],
+    +         "target": Array [
+    +           "html",
+    +         ],
+    +       },
+    +     ],
+    +     "tags": Array [
+    +       "cat.language",
+    +       "wcag2a",
+    +       "wcag311",
+    +       "TTv5",
+    +       "TT11.a",
+    +       "EN-301-549",
+    +       "EN-9.3.1.1",
+    +       "ACT",
+    +       "RGAAv4",
+    +       "RGAA-8.3.1",
+    +     ],
+    +   },
+    +   Object {
+    +     "description": "Ensure <img> elements have alternative text or a role of none or presentation",
+    +     "help": "Images must have alternative text",
+    +     "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/image-alt?application=playwright",
+    +     "id": "image-alt",
+    +     "impact": "critical",
+    +     "nodes": Array [
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": null,
+    +             "id": "has-alt",
+    +             "impact": "critical",
+    +             "message": "Element does not have an alt attribute",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": null,
+    +             "id": "aria-label",
+    +             "impact": "critical",
+    +             "message": "aria-label attribute does not exist or is empty",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": null,
+    +             "id": "aria-labelledby",
+    +             "impact": "critical",
+    +             "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": Object {
+    +               "messageKey": "noAttr",
+    +             },
+    +             "id": "non-empty-title",
+    +             "impact": "critical",
+    +             "message": "Element has no title attribute",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": null,
+    +             "id": "presentational-role",
+    +             "impact": "critical",
+    +             "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+    +             "relatedNodes": Array [],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix any of the following:
+    +   Element does not have an alt attribute
+    +   aria-label attribute does not exist or is empty
+    +   aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+    +   Element has no title attribute
+    +   Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+    +         "html": "<img src=\"images/clear.gif;jsessionid=4D471238F6992412FAABEA1F6B4CE434\" width=\"56\" height=\"42\" border=\"0\" class=\"admin\">",
+    +         "impact": "critical",
+    +         "none": Array [],
+    +         "target": Array [
+    +           ".admin",
+    +         ],
+    +       },
+    +     ],
+    +     "tags": Array [
+    +       "cat.text-alternatives",
+    +       "wcag2a",
+    +       "wcag111",
+    +       "section508",
+    +       "section508.22.a",
+    +       "TTv5",
+    +       "TT7.a",
+    +       "TT7.b",
+    +       "EN-301-549",
+    +       "EN-9.1.1.1",
+    +       "ACT",
+    +       "RGAAv4",
+    +       "RGAA-1.1.1",
+    +     ],
+    +   },
+    +   Object {
+    +     "description": "Ensure every form element has a label",
+    +     "help": "Form elements must have labels",
+    +     "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/label?application=playwright",
+    +     "id": "label",
+    +     "impact": "critical",
+    +     "nodes": Array [
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": null,
+    +             "id": "implicit-label",
+    +             "impact": "critical",
+    +             "message": "Element does not have an implicit (wrapped) <label>",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": null,
+    +             "id": "explicit-label",
+    +             "impact": "critical",
+    +             "message": "Element does not have an explicit <label>",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": null,
+    +             "id": "aria-label",
+    +             "impact": "critical",
+    +             "message": "aria-label attribute does not exist or is empty",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": null,
+    +             "id": "aria-labelledby",
+    +             "impact": "critical",
+    +             "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": Object {
+    +               "messageKey": "noAttr",
+    +             },
+    +             "id": "non-empty-title",
+    +             "impact": "critical",
+    +             "message": "Element has no title attribute",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": Object {
+    +               "messageKey": "noAttr",
+    +             },
+    +             "id": "non-empty-placeholder",
+    +             "impact": "critical",
+    +             "message": "Element has no placeholder attribute",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": null,
+    +             "id": "presentational-role",
+    +             "impact": "critical",
+    +             "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+    +             "relatedNodes": Array [],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix any of the following:
+    +   Element does not have an implicit (wrapped) <label>
+    +   Element does not have an explicit <label>
+    +   aria-label attribute does not exist or is empty
+    +   aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+    +   Element has no title attribute
+    +   Element has no placeholder attribute
+    +   Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+    +         "html": "<input type=\"text\" class=\"input\" name=\"username\">",
+    +         "impact": "critical",
+    +         "none": Array [],
+    +         "target": Array [
+    +           "input[type=\"text\"]",
+    +         ],
+    +       },
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": null,
+    +             "id": "implicit-label",
+    +             "impact": "critical",
+    +             "message": "Element does not have an implicit (wrapped) <label>",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": null,
+    +             "id": "explicit-label",
+    +             "impact": "critical",
+    +             "message": "Element does not have an explicit <label>",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": null,
+    +             "id": "aria-label",
+    +             "impact": "critical",
+    +             "message": "aria-label attribute does not exist or is empty",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": null,
+    +             "id": "aria-labelledby",
+    +             "impact": "critical",
+    +             "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": Object {
+    +               "messageKey": "noAttr",
+    +             },
+    +             "id": "non-empty-title",
+    +             "impact": "critical",
+    +             "message": "Element has no title attribute",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": Object {
+    +               "messageKey": "noAttr",
+    +             },
+    +             "id": "non-empty-placeholder",
+    +             "impact": "critical",
+    +             "message": "Element has no placeholder attribute",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": null,
+    +             "id": "presentational-role",
+    +             "impact": "critical",
+    +             "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+    +             "relatedNodes": Array [],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix any of the following:
+    +   Element does not have an implicit (wrapped) <label>
+    +   Element does not have an explicit <label>
+    +   aria-label attribute does not exist or is empty
+    +   aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+    +   Element has no title attribute
+    +   Element has no placeholder attribute
+    +   Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+    +         "html": "<input type=\"password\" class=\"input\" name=\"password\">",
+    +         "impact": "critical",
+    +         "none": Array [],
+    +         "target": Array [
+    +           "input[type=\"password\"]",
+    +         ],
+    +       },
+    +     ],
+    +     "tags": Array [
+    +       "cat.forms",
+    +       "wcag2a",
+    +       "wcag412",
+    +       "section508",
+    +       "section508.22.n",
+    +       "TTv5",
+    +       "TT5.c",
+    +       "EN-301-549",
+    +       "EN-9.4.1.2",
+    +       "ACT",
+    +       "RGAAv4",
+    +       "RGAA-11.1.1",
+    +     ],
+    +   },
+    +   Object {
+    +     "description": "Ensure links have discernible text",
+    +     "help": "Links must have discernible text",
+    +     "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/link-name?application=playwright",
+    +     "id": "link-name",
+    +     "impact": "serious",
+    +     "nodes": Array [
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": null,
+    +             "id": "has-visible-text",
+    +             "impact": "serious",
+    +             "message": "Element does not have text that is visible to screen readers",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": null,
+    +             "id": "aria-label",
+    +             "impact": "serious",
+    +             "message": "aria-label attribute does not exist or is empty",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": null,
+    +             "id": "aria-labelledby",
+    +             "impact": "serious",
+    +             "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": Object {
+    +               "messageKey": "noAttr",
+    +             },
+    +             "id": "non-empty-title",
+    +             "impact": "serious",
+    +             "message": "Element has no title attribute",
+    +             "relatedNodes": Array [],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix all of the following:
+    +   Element is in tab order and does not have accessible text
+    +
+    + Fix any of the following:
+    +   Element does not have text that is visible to screen readers
+    +   aria-label attribute does not exist or is empty
+    +   aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+    +   Element has no title attribute",
+    +         "html": "<a href=\"admin.htm;jsessionid=4D471238F6992412FAABEA1F6B4CE434\"><img src=\"images/clear.gif;jsessionid=4D471238F6992412FAABEA1F6B4CE434\" width=\"56\" height=\"42\" border=\"0\" class=\"admin\"></a>",
+    +         "impact": "serious",
+    +         "none": Array [
+    +           Object {
+    +             "data": null,
+    +             "id": "focusable-no-name",
+    +             "impact": "serious",
+    +             "message": "Element is in tab order and does not have accessible text",
+    +             "relatedNodes": Array [],
+    +           },
+    +         ],
+    +         "target": Array [
+    +           "#topPanel > a:nth-child(1)",
+    +         ],
+    +       },
+    +     ],
+    +     "tags": Array [
+    +       "cat.name-role-value",
+    +       "wcag2a",
+    +       "wcag244",
+    +       "wcag412",
+    +       "section508",
+    +       "section508.22.a",
+    +       "TTv5",
+    +       "TT6.a",
+    +       "EN-301-549",
+    +       "EN-9.2.4.4",
+    +       "EN-9.4.1.2",
+    +       "ACT",
+    +       "RGAAv4",
+    +       "RGAA-6.2.1",
+    +     ],
+    +   },
+    + ]
+
+       6 |     await loginPage.goto();
+       7 |     const violations = await seriousOrCriticalViolations(loginPage.page);
+    >  8 |     expect(violations, JSON.stringify(violations, null, 2)).toEqual([]);
+         |                                                             ^
+       9 |   });
+      10 |
+      11 |   test('accounts overview has no serious or critical violations', async ({
+        at E:\parabank-playwright-ts\tests\a11y\accessibility.spec.ts:8:61
+
+    attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    test-results\a11y-accessibility-Accessi-8b13c-ious-or-critical-violations-chromium\test-failed-1.png
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    Error Context: test-results\a11y-accessibility-Accessi-8b13c-ious-or-critical-violations-chromium\error-context.md
+
+  2) [chromium] ΓÇ║ tests\a11y\accessibility.spec.ts:11:7 ΓÇ║ Accessibility ΓÇ║ accounts overview has no serious or critical violations 
+
+    Error: [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#828282",
+                  "bgColor": "#ffffff",
+                  "contrastRatio": 3.84,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<p class=\"caption\">Experience the difference</p>",
+                    "target": [
+                      ".caption"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 3.84 (foreground color: #828282, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<p class=\"caption\">Experience the difference</p>",
+            "target": [
+              ".caption"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.84 (foreground color: #828282, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#9999cc",
+                  "bgColor": "#e8edff",
+                  "contrastRatio": 2.31,
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<td colspan=\"3\">*Balance includes deposits that may be subject to holds</td>",
+                    "target": [
+                      "td[colspan=\"3\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 2.31 (foreground color: #9999cc, background color: #e8edff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<td colspan=\"3\">*Balance includes deposits that may be subject to holds</td>",
+            "target": [
+              "td[colspan=\"3\"]"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #9999cc, background color: #e8edff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#007163",
+                  "bgColor": "#c7d5e4",
+                  "contrastRatio": 3.97,
+                  "fontSize": "7.5pt (10px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<ul class=\"visit\">\n      <li>Visit us at:</li>\n      <li><a href=\"http://www.parasoft.com/\" target=\"_blank\">www.parasoft.com</a></li>\n    </ul>",
+                    "target": [
+                      ".visit"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 3.97 (foreground color: #007163, background color: #c7d5e4, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<li>Visit us at:</li>",
+            "target": [
+              ".visit > li:nth-child(1)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.97 (foreground color: #007163, background color: #c7d5e4, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#007163",
+                  "bgColor": "#c7d5e4",
+                  "contrastRatio": 3.97,
+                  "fontSize": "7.5pt (10px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<a href=\"http://www.parasoft.com/\" target=\"_blank\">www.parasoft.com</a>",
+                    "target": [
+                      "li:nth-child(2) > a[href$=\"parasoft.com/\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 3.97 (foreground color: #007163, background color: #c7d5e4, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<a href=\"http://www.parasoft.com/\" target=\"_blank\">www.parasoft.com</a>",
+            "target": [
+              "li:nth-child(2) > a[href$=\"parasoft.com/\"]"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.97 (foreground color: #007163, background color: #c7d5e4, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      },
+      {
+        "id": "html-has-lang",
+        "impact": "serious",
+        "tags": [
+          "cat.language",
+          "wcag2a",
+          "wcag311",
+          "TTv5",
+          "TT11.a",
+          "EN-301-549",
+          "EN-9.3.1.1",
+          "ACT",
+          "RGAAv4",
+          "RGAA-8.3.1"
+        ],
+        "description": "Ensure every HTML document has a lang attribute",
+        "help": "<html> element must have a lang attribute",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/html-has-lang?application=playwright",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "has-lang",
+                "data": {
+                  "messageKey": "noLang"
+                },
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "The <html> element does not have a lang attribute"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<html>",
+            "target": [
+              "html"
+            ],
+            "failureSummary": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+          }
+        ]
+      },
+      {
+        "id": "image-alt",
+        "impact": "critical",
+        "tags": [
+          "cat.text-alternatives",
+          "wcag2a",
+          "wcag111",
+          "section508",
+          "section508.22.a",
+          "TTv5",
+          "TT7.a",
+          "TT7.b",
+          "EN-301-549",
+          "EN-9.1.1.1",
+          "ACT",
+          "RGAAv4",
+          "RGAA-1.1.1"
+        ],
+        "description": "Ensure <img> elements have alternative text or a role of none or presentation",
+        "help": "Images must have alternative text",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/image-alt?application=playwright",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "has-alt",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element does not have an alt attribute"
+              },
+              {
+                "id": "aria-label",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "aria-label attribute does not exist or is empty"
+              },
+              {
+                "id": "aria-labelledby",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+              },
+              {
+                "id": "non-empty-title",
+                "data": {
+                  "messageKey": "noAttr"
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element has no title attribute"
+              },
+              {
+                "id": "presentational-role",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "critical",
+            "html": "<img src=\"images/clear.gif\" width=\"56\" height=\"42\" border=\"0\" class=\"admin\">",
+            "target": [
+              ".admin"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+          }
+        ]
+      },
+      {
+        "id": "link-name",
+        "impact": "serious",
+        "tags": [
+          "cat.name-role-value",
+          "wcag2a",
+          "wcag244",
+          "wcag412",
+          "section508",
+          "section508.22.a",
+          "TTv5",
+          "TT6.a",
+          "EN-301-549",
+          "EN-9.2.4.4",
+          "EN-9.4.1.2",
+          "ACT",
+          "RGAAv4",
+          "RGAA-6.2.1"
+        ],
+        "description": "Ensure links have discernible text",
+        "help": "Links must have discernible text",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/link-name?application=playwright",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "has-visible-text",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Element does not have text that is visible to screen readers"
+              },
+              {
+                "id": "aria-label",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "aria-label attribute does not exist or is empty"
+              },
+              {
+                "id": "aria-labelledby",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+              },
+              {
+                "id": "non-empty-title",
+                "data": {
+                  "messageKey": "noAttr"
+                },
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Element has no title attribute"
+              }
+            ],
+            "all": [],
+            "none": [
+              {
+                "id": "focusable-no-name",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Element is in tab order and does not have accessible text"
+              }
+            ],
+            "impact": "serious",
+            "html": "<a href=\"admin.htm\"><img src=\"images/clear.gif\" width=\"56\" height=\"42\" border=\"0\" class=\"admin\"></a>",
+            "target": [
+              "#topPanel > a[href$=\"admin.htm\"]"
+            ],
+            "failureSummary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+          }
+        ]
+      }
+    ]
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -   1
+    + Received  + 369
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+    +     "help": "Elements must meet minimum color contrast ratio thresholds",
+    +     "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+    +     "id": "color-contrast",
+    +     "impact": "serious",
+    +     "nodes": Array [
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": Object {
+    +               "bgColor": "#ffffff",
+    +               "contrastRatio": 3.84,
+    +               "expectedContrastRatio": "4.5:1",
+    +               "fgColor": "#828282",
+    +               "fontSize": "9.8pt (13px)",
+    +               "fontWeight": "normal",
+    +               "messageKey": null,
+    +             },
+    +             "id": "color-contrast",
+    +             "impact": "serious",
+    +             "message": "Element has insufficient color contrast of 3.84 (foreground color: #828282, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +             "relatedNodes": Array [
+    +               Object {
+    +                 "html": "<p class=\"caption\">Experience the difference</p>",
+    +                 "target": Array [
+    +                   ".caption",
+    +                 ],
+    +               },
+    +             ],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix any of the following:
+    +   Element has insufficient color contrast of 3.84 (foreground color: #828282, background color: #ffffff, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "html": "<p class=\"caption\">Experience the difference</p>",
+    +         "impact": "serious",
+    +         "none": Array [],
+    +         "target": Array [
+    +           ".caption",
+    +         ],
+    +       },
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": Object {
+    +               "bgColor": "#e8edff",
+    +               "contrastRatio": 2.31,
+    +               "expectedContrastRatio": "4.5:1",
+    +               "fgColor": "#9999cc",
+    +               "fontSize": "9.0pt (12px)",
+    +               "fontWeight": "normal",
+    +               "messageKey": null,
+    +             },
+    +             "id": "color-contrast",
+    +             "impact": "serious",
+    +             "message": "Element has insufficient color contrast of 2.31 (foreground color: #9999cc, background color: #e8edff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +             "relatedNodes": Array [
+    +               Object {
+    +                 "html": "<td colspan=\"3\">*Balance includes deposits that may be subject to holds</td>",
+    +                 "target": Array [
+    +                   "td[colspan=\"3\"]",
+    +                 ],
+    +               },
+    +             ],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix any of the following:
+    +   Element has insufficient color contrast of 2.31 (foreground color: #9999cc, background color: #e8edff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "html": "<td colspan=\"3\">*Balance includes deposits that may be subject to holds</td>",
+    +         "impact": "serious",
+    +         "none": Array [],
+    +         "target": Array [
+    +           "td[colspan=\"3\"]",
+    +         ],
+    +       },
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": Object {
+    +               "bgColor": "#c7d5e4",
+    +               "contrastRatio": 3.97,
+    +               "expectedContrastRatio": "4.5:1",
+    +               "fgColor": "#007163",
+    +               "fontSize": "7.5pt (10px)",
+    +               "fontWeight": "normal",
+    +               "messageKey": null,
+    +             },
+    +             "id": "color-contrast",
+    +             "impact": "serious",
+    +             "message": "Element has insufficient color contrast of 3.97 (foreground color: #007163, background color: #c7d5e4, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +             "relatedNodes": Array [
+    +               Object {
+    +                 "html": "<ul class=\"visit\">
+    +       <li>Visit us at:</li>
+    +       <li><a href=\"http://www.parasoft.com/\" target=\"_blank\">www.parasoft.com</a></li>
+    +     </ul>",
+    +                 "target": Array [
+    +                   ".visit",
+    +                 ],
+    +               },
+    +             ],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix any of the following:
+    +   Element has insufficient color contrast of 3.97 (foreground color: #007163, background color: #c7d5e4, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "html": "<li>Visit us at:</li>",
+    +         "impact": "serious",
+    +         "none": Array [],
+    +         "target": Array [
+    +           ".visit > li:nth-child(1)",
+    +         ],
+    +       },
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": Object {
+    +               "bgColor": "#c7d5e4",
+    +               "contrastRatio": 3.97,
+    +               "expectedContrastRatio": "4.5:1",
+    +               "fgColor": "#007163",
+    +               "fontSize": "7.5pt (10px)",
+    +               "fontWeight": "normal",
+    +               "messageKey": null,
+    +             },
+    +             "id": "color-contrast",
+    +             "impact": "serious",
+    +             "message": "Element has insufficient color contrast of 3.97 (foreground color: #007163, background color: #c7d5e4, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +             "relatedNodes": Array [
+    +               Object {
+    +                 "html": "<a href=\"http://www.parasoft.com/\" target=\"_blank\">www.parasoft.com</a>",
+    +                 "target": Array [
+    +                   "li:nth-child(2) > a[href$=\"parasoft.com/\"]",
+    +                 ],
+    +               },
+    +             ],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix any of the following:
+    +   Element has insufficient color contrast of 3.97 (foreground color: #007163, background color: #c7d5e4, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "html": "<a href=\"http://www.parasoft.com/\" target=\"_blank\">www.parasoft.com</a>",
+    +         "impact": "serious",
+    +         "none": Array [],
+    +         "target": Array [
+    +           "li:nth-child(2) > a[href$=\"parasoft.com/\"]",
+    +         ],
+    +       },
+    +     ],
+    +     "tags": Array [
+    +       "cat.color",
+    +       "wcag2aa",
+    +       "wcag143",
+    +       "TTv5",
+    +       "TT13.c",
+    +       "EN-301-549",
+    +       "EN-9.1.4.3",
+    +       "ACT",
+    +       "RGAAv4",
+    +       "RGAA-3.2.1",
+    +     ],
+    +   },
+    +   Object {
+    +     "description": "Ensure every HTML document has a lang attribute",
+    +     "help": "<html> element must have a lang attribute",
+    +     "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/html-has-lang?application=playwright",
+    +     "id": "html-has-lang",
+    +     "impact": "serious",
+    +     "nodes": Array [
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": Object {
+    +               "messageKey": "noLang",
+    +             },
+    +             "id": "has-lang",
+    +             "impact": "serious",
+    +             "message": "The <html> element does not have a lang attribute",
+    +             "relatedNodes": Array [],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix any of the following:
+    +   The <html> element does not have a lang attribute",
+    +         "html": "<html>",
+    +         "impact": "serious",
+    +         "none": Array [],
+    +         "target": Array [
+    +           "html",
+    +         ],
+    +       },
+    +     ],
+    +     "tags": Array [
+    +       "cat.language",
+    +       "wcag2a",
+    +       "wcag311",
+    +       "TTv5",
+    +       "TT11.a",
+    +       "EN-301-549",
+    +       "EN-9.3.1.1",
+    +       "ACT",
+    +       "RGAAv4",
+    +       "RGAA-8.3.1",
+    +     ],
+    +   },
+    +   Object {
+    +     "description": "Ensure <img> elements have alternative text or a role of none or presentation",
+    +     "help": "Images must have alternative text",
+    +     "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/image-alt?application=playwright",
+    +     "id": "image-alt",
+    +     "impact": "critical",
+    +     "nodes": Array [
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": null,
+    +             "id": "has-alt",
+    +             "impact": "critical",
+    +             "message": "Element does not have an alt attribute",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": null,
+    +             "id": "aria-label",
+    +             "impact": "critical",
+    +             "message": "aria-label attribute does not exist or is empty",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": null,
+    +             "id": "aria-labelledby",
+    +             "impact": "critical",
+    +             "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": Object {
+    +               "messageKey": "noAttr",
+    +             },
+    +             "id": "non-empty-title",
+    +             "impact": "critical",
+    +             "message": "Element has no title attribute",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": null,
+    +             "id": "presentational-role",
+    +             "impact": "critical",
+    +             "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+    +             "relatedNodes": Array [],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix any of the following:
+    +   Element does not have an alt attribute
+    +   aria-label attribute does not exist or is empty
+    +   aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+    +   Element has no title attribute
+    +   Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+    +         "html": "<img src=\"images/clear.gif\" width=\"56\" height=\"42\" border=\"0\" class=\"admin\">",
+    +         "impact": "critical",
+    +         "none": Array [],
+    +         "target": Array [
+    +           ".admin",
+    +         ],
+    +       },
+    +     ],
+    +     "tags": Array [
+    +       "cat.text-alternatives",
+    +       "wcag2a",
+    +       "wcag111",
+    +       "section508",
+    +       "section508.22.a",
+    +       "TTv5",
+    +       "TT7.a",
+    +       "TT7.b",
+    +       "EN-301-549",
+    +       "EN-9.1.1.1",
+    +       "ACT",
+    +       "RGAAv4",
+    +       "RGAA-1.1.1",
+    +     ],
+    +   },
+    +   Object {
+    +     "description": "Ensure links have discernible text",
+    +     "help": "Links must have discernible text",
+    +     "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/link-name?application=playwright",
+    +     "id": "link-name",
+    +     "impact": "serious",
+    +     "nodes": Array [
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": null,
+    +             "id": "has-visible-text",
+    +             "impact": "serious",
+    +             "message": "Element does not have text that is visible to screen readers",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": null,
+    +             "id": "aria-label",
+    +             "impact": "serious",
+    +             "message": "aria-label attribute does not exist or is empty",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": null,
+    +             "id": "aria-labelledby",
+    +             "impact": "serious",
+    +             "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+    +             "relatedNodes": Array [],
+    +           },
+    +           Object {
+    +             "data": Object {
+    +               "messageKey": "noAttr",
+    +             },
+    +             "id": "non-empty-title",
+    +             "impact": "serious",
+    +             "message": "Element has no title attribute",
+    +             "relatedNodes": Array [],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix all of the following:
+    +   Element is in tab order and does not have accessible text
+    +
+    + Fix any of the following:
+    +   Element does not have text that is visible to screen readers
+    +   aria-label attribute does not exist or is empty
+    +   aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+    +   Element has no title attribute",
+    +         "html": "<a href=\"admin.htm\"><img src=\"images/clear.gif\" width=\"56\" height=\"42\" border=\"0\" class=\"admin\"></a>",
+    +         "impact": "serious",
+    +         "none": Array [
+    +           Object {
+    +             "data": null,
+    +             "id": "focusable-no-name",
+    +             "impact": "serious",
+    +             "message": "Element is in tab order and does not have accessible text",
+    +             "relatedNodes": Array [],
+    +           },
+    +         ],
+    +         "target": Array [
+    +           "#topPanel > a[href$=\"admin.htm\"]",
+    +         ],
+    +       },
+    +     ],
+    +     "tags": Array [
+    +       "cat.name-role-value",
+    +       "wcag2a",
+    +       "wcag244",
+    +       "wcag412",
+    +       "section508",
+    +       "section508.22.a",
+    +       "TTv5",
+    +       "TT6.a",
+    +       "EN-301-549",
+    +       "EN-9.2.4.4",
+    +       "EN-9.4.1.2",
+    +       "ACT",
+    +       "RGAAv4",
+    +       "RGAA-6.2.1",
+    +     ],
+    +   },
+    + ]
+
+      14 |     await accountsOverviewPage.goto();
+      15 |     const violations = await seriousOrCriticalViolations(authedPage);
+    > 16 |     expect(violations, JSON.stringify(violations, null, 2)).toEqual([]);
+         |                                                             ^
+      17 |   });
+      18 | });
+        at E:\parabank-playwright-ts\tests\a11y\accessibility.spec.ts:16:61
+
+    attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    test-results\a11y-accessibility-Accessi-2fde1-ious-or-critical-violations-chromium\test-failed-1.png
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    Error Context: test-results\a11y-accessibility-Accessi-2fde1-ious-or-critical-violations-chromium\error-context.md
+
+  2 failed
+    [chromium] ΓÇ║ tests\a11y\accessibility.spec.ts:5:7 ΓÇ║ Accessibility ΓÇ║ login page has no serious or critical violations 
+    [chromium] ΓÇ║ tests\a11y\accessibility.spec.ts:11:7 ΓÇ║ Accessibility ΓÇ║ accounts overview has no serious or critical violations 
+
+To open last HTML report run:
+[36m[39m
+[36m  npx playwright show-report[39m
+[36m[39m
