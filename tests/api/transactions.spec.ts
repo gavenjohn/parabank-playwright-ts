@@ -1,4 +1,5 @@
-import { test, expect, type APIRequestContext } from '../../src/fixtures/test-fixtures';
+import { type APIRequestContext } from '@playwright/test';
+import { test, expect } from '../../src/fixtures/test-fixtures';
 import { transactionSchema, transactionsSchema } from '../../src/api/schemas';
 
 const AMOUNT = 25;
