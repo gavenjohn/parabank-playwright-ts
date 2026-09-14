@@ -96,4 +96,22 @@ test.describe('Transactions API', () => {
     const result = transactionsSchema.safeParse(await response.json());
     expect(result.success, JSON.stringify(result.success ? null : result.error.issues)).toBe(true);
   });
+
+  test('GET transactions within a date range returns matching transactions', async ({
+  request, authedPage, accountsOverviewPage, openAccountPage,
+}) => {
+  const accountId = await createTransaction(request, accountsOverviewPage, openAccountPage);
+  const today = todayAsMMDDYYYY();
+
+  // Confirmed via manual testing: fromDate and toDate are inclusive - a
+  // same-day range returns transactions created that day.
+  const response = await request.get(
+    `/parabank/services/bank/accounts/${accountId}/transactions/fromDate/${today}/toDate/${today}`,
+    { headers: { Accept: 'application/json' } },
+  );
+
+  expect(response.status()).toBe(200);
+  const result = transactionsSchema.safeParse(await response.json());
+  expect(result.success, JSON.stringify(result.success ? null : result.error.issues)).toBe(true);
+});
 });
