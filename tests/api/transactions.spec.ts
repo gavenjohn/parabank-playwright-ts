@@ -6,11 +6,13 @@ import { type OpenAccountPage } from '../../src/pages/open-account.page';
 
 const AMOUNT = 25;
 
+// UTC, not local time: the container's clock is UTC and dates transactions by it,
+// so a runner behind UTC would ask for the previous day every evening.
 function todayAsMMDDYYYY(): string {
   const now = new Date();
-  const mm = String(now.getMonth() + 1).padStart(2, '0');
-  const dd = String(now.getDate()).padStart(2, '0');
-  return `${mm}-${dd}-${now.getFullYear()}`;
+  const mm = String(now.getUTCMonth() + 1).padStart(2, '0');
+  const dd = String(now.getUTCDate()).padStart(2, '0');
+  return `${mm}-${dd}-${now.getUTCFullYear()}`;
 }
 
 // Creates a transaction of a known amount to look up: opens a savings account
@@ -26,10 +28,11 @@ async function createTransaction(
   await openAccountPage.goto();
   const toAccountId = await openAccountPage.openSavings();
 
-  await request.post('/parabank/services/bank/transfer', {
+  const transfer = await request.post('/parabank/services/bank/transfer', {
     params: { fromAccountId, toAccountId, amount: String(AMOUNT) },
     headers: { Accept: 'application/json' },
   });
+  expect(transfer.status(), 'setup transfer failed').toBe(200);
 
   return fromAccountId;
 }
@@ -77,6 +80,7 @@ test.describe('Transactions API', () => {
     const body = await response.json();
     const result = transactionsSchema.safeParse(body);
     expect(result.success, JSON.stringify(result.success ? null : result.error.issues)).toBe(true);
+    expect(body.length).toBeGreaterThan(0); // every() and the schema both pass on []
     expect(body.every((t: { amount: number }) => t.amount === AMOUNT)).toBe(true);
   });
 
@@ -92,8 +96,10 @@ test.describe('Transactions API', () => {
     );
 
     expect(response.status()).toBe(200);
-    const result = transactionsSchema.safeParse(await response.json());
+    const body = await response.json();
+    const result = transactionsSchema.safeParse(body);
     expect(result.success, JSON.stringify(result.success ? null : result.error.issues)).toBe(true);
+    expect(body.length).toBeGreaterThan(0);
   });
 
   test('GET transactions within a date range returns matching transactions', async ({
@@ -109,7 +115,9 @@ test.describe('Transactions API', () => {
     );
 
     expect(response.status()).toBe(200);
-    const result = transactionsSchema.safeParse(await response.json());
+    const body = await response.json();
+    const result = transactionsSchema.safeParse(body);
     expect(result.success, JSON.stringify(result.success ? null : result.error.issues)).toBe(true);
+    expect(body.length).toBeGreaterThan(0);
   });
 });
