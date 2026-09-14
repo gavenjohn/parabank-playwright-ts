@@ -35,23 +35,24 @@ through the UI, and assert the resulting state rather than a confirmation messag
 
 | Layer | Tests | Covers |
 |---|---|---|
-| API | 12 | Account and transaction lookups by id, amount, date and date range; loan approval and both denial rules; the login endpoint |
+| API | 13 | Account and transaction lookups by id, amount, date and date range; loan approval and both denial rules; the login endpoint's credential handling and SSN exposure |
 | UI | 7 | Login with a valid and an invalid password, accounts overview, open account, transfer, bill pay, and a guard test for the customer fixture |
 | Business rules | 1 | Minimum balance on transfer — it spans an admin setting and a customer action, so it drives both pages |
 | Accessibility | 2 | axe-core scans of the login page and accounts overview, serious and critical violations only |
 
-All 22 tests run in Chromium, Firefox and WebKit. `globalSetup` creates the database schema
+All 23 tests run in Chromium, Firefox and WebKit. `globalSetup` creates the database schema
 before every run, and each test that needs a customer registers its own by posting the
 registration form, so no test depends on data another test created.
 
 ## Expected failures
 
 Deterministic defects are encoded as tests that assert the correct behaviour and are
-marked `test.fail()`: DEF-002 (1 test), DEF-004 (2) and DEF-005 (1). The build stays green
+marked `test.fail()`: DEF-002 (1 test), DEF-004 (2) and DEF-005 (2). The build stays green
 and the report lists them as expected failures, each citing its defect document.
 
-An expected-failure test passes whenever it fails, for any reason. When one of these
-defects is reported fixed, re-check the test by hand rather than relying on it to flip.
+An expected-failure test passes whenever it fails, for any reason, so an unrelated breakage
+can hide inside one. The tests are written so a fixed defect flips to an unexpected pass;
+for DEF-002 and DEF-005 that was confirmed by running them against a simulated fix.
 
 ## Deliberately not automated
 

@@ -6,8 +6,8 @@ UI, API and accessibility test automation for [ParaBank](https://github.com/para
 a demo banking application, using Playwright and TypeScript. The application under test
 runs in a Docker container that the pipeline starts itself.
 
-**22 tests, each run in Chromium, Firefox and WebKit — 66 executions per run.** 18 assert
-correct behaviour. 4 are expected failures (`test.fail()`) that encode open defects in the
+**23 tests, each run in Chromium, Firefox and WebKit — 69 executions per run.** 18 assert
+correct behaviour. 5 are expected failures (`test.fail()`) that encode open defects in the
 application, so the build stays green while the defects stay visible in the report. Five
 defects are documented in [`docs/defects/`](docs/defects/), and the reasoning behind what
 is and isn't automated is in [`docs/test-strategy.md`](docs/test-strategy.md).
@@ -17,7 +17,7 @@ is and isn't automated is in [`docs/test-strategy.md`](docs/test-strategy.md).
 | Layer | Tests | Covers |
 |---|---|---|
 | UI | 7 | Login with a valid and an invalid password, accounts overview, open account, funds transfer, bill pay, and a guard test for the customer fixture |
-| API | 12 | Account and transaction lookups — by id, amount, date and date range — validated against Zod schemas; loan approval and both denial rules; the login endpoint (DEF-005, expected failure) |
+| API | 13 | Account and transaction lookups — by id, amount, date and date range — validated against Zod schemas; loan approval and both denial rules; the login endpoint's credential handling and SSN exposure (DEF-005, expected failures) |
 | Business rules | 1 | Minimum balance enforced on transfer (DEF-002, expected failure) |
 | Accessibility | 2 | axe-core scans of the login page and accounts overview (DEF-004, expected failures) |
 
@@ -153,7 +153,7 @@ seconds per local run against about 45 at four workers.
 | [DEF-002](docs/defects/DEF-002-transfer-permits-negative-balance.md) | High | A transfer is authorised for more than the available balance, leaving the account below the configured minimum. Encoded as an expected failure. |
 | [DEF-003](docs/defects/DEF-003-concurrent-registration-false-duplicate.md) | High | Concurrent creates collide on id allocation or deadlock, losing the request — often reported as a duplicate username. The reason `workers` is 1. |
 | [DEF-004](docs/defects/DEF-004-accessibility-violations.md) | High | WCAG 2 AA failures on the login page and accounts overview, including login fields with no accessible label. Encoded as expected failures. |
-| [DEF-005](docs/defects/DEF-005-login-endpoint-exposes-credentials-and-pii.md) | Critical | A REST login endpoint accepts credentials in the URL path and returns the customer's SSN. Encoded as an expected failure. |
+| [DEF-005](docs/defects/DEF-005-login-endpoint-exposes-credentials-and-pii.md) | Critical | A REST login endpoint accepts credentials in the URL path and returns the customer's SSN. Encoded as two expected failures. |
 
 ## Roadmap
 

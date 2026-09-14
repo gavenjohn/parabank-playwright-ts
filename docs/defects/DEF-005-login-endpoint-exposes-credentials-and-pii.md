@@ -50,7 +50,7 @@ not account metadata.
 
 ## Status
 
-Open, third-party application, cannot be patched. Encoded as a
-`test.fail()` regression test asserting the endpoint should not accept
-credentials via URL or return PII in a GET response — see
-`tests/api/login-endpoint.spec.ts`.
+Open, third-party application, cannot be patched. Encoded as two `test.fail()`
+regression tests in `tests/api/login-endpoint.spec.ts`: one asserts the endpoint
+rejects credentials in the URL path, the other that the response does not contain
+the customer's SSN. They are separate so each claim is checked independently.
