@@ -19,3 +19,11 @@ export const transactionSchema = z.object({
 });
 
 export const transactionsSchema = z.array(transactionSchema);
+
+export const loanResponseSchema = z.object({
+  responseDate: z.number(),
+  loanProviderName: z.string(),
+  approved: z.boolean(),
+  accountId: z.number().nullable(),
+  message: z.string().optional(), // absent on approval, present on denial
+});
