@@ -8,8 +8,6 @@ export class AdminPage {
   constructor(page: Page) {
     this.page = page;
     this.minimumBalance = page.locator('#minimumBalance');
-    // Scoped to #adminForm - the page also has separate Initialize/Clean and
-    // JMS Shutdown buttons that a broader role query would also match.
     this.submit = page.locator('#adminForm').getByRole('button', { name: 'Submit' });
   }
 

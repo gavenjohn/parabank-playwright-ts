@@ -9,9 +9,8 @@ test.describe('Login', () => {
     await expect(page.getByRole('heading', { name: 'Accounts Overview' })).toBeVisible();
   });
 
-  // Uses a real, existing customer with a wrong password. A made-up username
-  // would produce the same error for an unrelated reason - the customer
-  // wouldn't exist - and the test would pass even if password checking broke.
+  // A real customer with a wrong password: an unknown username returns the same
+  // error, and would pass even if password checking were broken.
   test('an invalid password is rejected with an error and no session is created', async ({
     page, registeredCustomer, loginPage,
   }) => {

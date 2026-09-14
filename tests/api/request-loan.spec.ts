@@ -1,15 +1,13 @@
+import { type APIRequestContext } from '@playwright/test';
 import { test, expect } from '../../src/fixtures/test-fixtures';
 import { loanResponseSchema } from '../../src/api/schemas';
 
-// Confirmed via manual testing against the default Loan Processor
-// (Available Funds, unchanged from admin defaults - no admin config driven
-// by this file). Two independent checks: the down payment alone must not
-// exceed the funding account's balance ("insufficient.funds.for.down.payment"
-// if it does, checked first), and the remaining amount must not exceed the
-// balance either ("insufficient.funds" if it does). Unlike DEF-002, this
-// rule is correctly enforced - these are ordinary tests, not test.fail().
+// Assumes the default loan processor, Available Funds. It rejects a down
+// payment above the funding account's balance first
+// (insufficient.funds.for.down.payment), then a remaining amount above it
+// (insufficient.funds). Enforced correctly, unlike DEF-002.
 test.describe('Request Loan API', () => {
-  async function customerIdFor(request: any, fromAccountId: string): Promise<number> {
+  async function customerIdFor(request: APIRequestContext, fromAccountId: string): Promise<number> {
     const res = await request.get(`/parabank/services/bank/accounts/${fromAccountId}`, {
       headers: { Accept: 'application/json' },
     });

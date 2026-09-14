@@ -18,10 +18,9 @@ export class OpenAccountPage {
   }
 
   async openSavings(): Promise<string> {
-    await this.typeSelect.selectOption('1'); // SAVINGS, per codegen capture
+    await this.typeSelect.selectOption('1'); // 1 = SAVINGS
     await this.openButton.click();
-    // The confirmation text and the account number are separate elements
-    // (#newAccountId is its own node) - reading the label alone yields no digits.
+    // The number is its own #newAccountId element, not part of the confirmation text.
     await expect(this.newAccountId).toBeVisible();
     return (await this.newAccountId.textContent())!.trim();
   }

@@ -1,7 +1,6 @@
 import { test, expect } from '../../src/fixtures/test-fixtures';
 
-// A page rendering "$NaN" or "$undefined" still passes a plain visibility
-// check. Parsing the text to a real number is what actually catches that.
+// Parses the balance rather than checking visibility, which "$NaN" would pass.
 test('accounts overview shows a numeric balance', async ({ authedPage, accountsOverviewPage }) => {
   await accountsOverviewPage.goto();
   const accountNumber = await accountsOverviewPage.firstAccountNumber();

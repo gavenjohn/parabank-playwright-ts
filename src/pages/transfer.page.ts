@@ -23,8 +23,8 @@ export class TransferPage {
 
   async transfer(amount: number, from: string, to: string) {
     await this.amount.fill(String(amount));
-    // Never rely on the dropdown's default selection - if ParaBank changes
-    // it, the test would silently transfer from the wrong account.
+    // Selected explicitly: a changed dropdown default would otherwise move money
+    // from the wrong account without failing.
     await this.fromAccount.selectOption(from);
     await this.toAccount.selectOption(to);
     await this.submit.click();

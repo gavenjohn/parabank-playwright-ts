@@ -2,7 +2,7 @@ import { test, expect } from '../../src/fixtures/test-fixtures';
 import { accountSchema, transactionsSchema } from '../../src/api/schemas';
 
 test.describe('Accounts API', () => {
-  test('GET account by id returns a well-formed account', async ({ request, registeredCustomer, authedPage, accountsOverviewPage }) => {
+  test('GET account by id returns a well-formed account', async ({ request, authedPage, accountsOverviewPage }) => {
     await accountsOverviewPage.goto();
     const accountId = await accountsOverviewPage.firstAccountNumber();
 
@@ -18,9 +18,8 @@ test.describe('Accounts API', () => {
     expect(result.success, JSON.stringify(result.success ? null : result.error.issues)).toBe(true);
   });
 
-  // ParaBank returns 400, not 404, for a non-existent account, and the error
-  // body ignores the Accept header and comes back as plain text rather than
-  // JSON - success and failure responses are negotiated differently.
+  // Undocumented: 400 rather than 404, and a plain-text body despite
+  // Accept: application/json.
   test('GET a non-existent account returns 400 with a plain-text message', async ({ request }) => {
     const response = await request.get('/parabank/services/bank/accounts/999999', {
       headers: { Accept: 'application/json' },

@@ -11,9 +11,9 @@ export type Customer = {
   password: string;
 };
 
-// Every test gets its own customer. Uniqueness comes from a timestamp plus a
-// random suffix - timestamp alone collides when two tests start in the same
-// millisecond, which is exactly what happens under parallel execution.
+// Timestamp plus a random suffix: the timestamp alone collides when two tests
+// start in the same millisecond. Usernames are 11 characters, inside
+// ParaBank's 20-character limit (DEF-001).
 export function newCustomer(): Customer {
   const unique = `${Date.now().toString().slice(-6)}${Math.floor(Math.random() * 900) + 100}`;
   return {

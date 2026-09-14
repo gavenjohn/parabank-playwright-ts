@@ -16,15 +16,13 @@ export class AccountsOverviewPage {
 
   async firstAccountNumber(): Promise<string> {
     const cell = this.page.getByRole('row').nth(1).getByRole('cell').first();
-    // Assert before reading: a bare textContent() can fire before the cell is
-    // populated and silently return "".
+    // Assert first: textContent() alone can read the cell before it's populated.
     await expect(cell).toHaveText(/\d+/);
     return (await cell.textContent())!.trim();
   }
 
   async balanceOf(accountNumber: string): Promise<number> {
-    // Filters by row rather than position - a customer can hold several
-    // accounts, so "first dollar figure on the page" is not a safe locator.
+    // Matched by account number, not position - a customer can hold several accounts.
     const row = this.page.getByRole('row').filter({ hasText: accountNumber });
     const text = await row.getByRole('cell').nth(1).textContent(); // column 1 = Balance
     return Number(text?.replace(/[^0-9.-]/g, ''));

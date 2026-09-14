@@ -1,12 +1,8 @@
 import { test, expect } from '../../src/fixtures/test-fixtures';
 import { AdminPage } from '../../src/pages/admin.page';
 
-// DEF-002: a transfer exceeding the available balance currently succeeds and
-// drives the account below the configured minimum, instead of being
-// rejected. This test encodes the correct behaviour and is marked as an
-// expected failure so CI stays green while the defect is open. If ParaBank
-// starts enforcing the minimum, this flips to an unexpected pass - remove
-// test.fail() at that point rather than treating it as newly broken.
+// DEF-002. Expected to fail: the transfer is authorised and leaves the account
+// below the configured minimum instead of being rejected.
 test('a transfer exceeding the configured minimum balance is rejected', async ({
   authedPage, accountsOverviewPage, openAccountPage, transferPage,
 }) => {

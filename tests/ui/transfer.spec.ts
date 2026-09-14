@@ -8,8 +8,7 @@ test('a transfer moves the exact amount between two accounts', async ({
   await accountsOverviewPage.goto();
   const from = await accountsOverviewPage.firstAccountNumber();
 
-  // A new customer starts with one account, so a second is opened here as the
-  // transfer destination.
+  // A new customer has one account, so a second is opened as the destination.
   await openAccountPage.goto();
   const to = await openAccountPage.openSavings();
 
@@ -20,9 +19,7 @@ test('a transfer moves the exact amount between two accounts', async ({
   await transferPage.goto();
   await transferPage.transfer(AMOUNT, from, to);
 
-  // The actual point of the test: "Transfer Complete!" appearing while the
-  // money did not move is exactly the defect a bank cares about, and the
-  // confirmation heading alone would pass straight through it.
+  // Asserts balances: the confirmation heading alone would pass even if no money moved.
   await accountsOverviewPage.goto();
   expect(await accountsOverviewPage.balanceOf(from)).toBe(fromBefore - AMOUNT);
   expect(await accountsOverviewPage.balanceOf(to)).toBe(toBefore + AMOUNT);

@@ -10,8 +10,6 @@ export class LoginPage {
     this.page = page;
     this.username = page.locator('input[name="username"]');
     this.password = page.locator('input[name="password"]');
-    // input[type="submit"], not getByRole('button', { name: 'Log In' }) - ParaBank
-    // renders this as a styled <input>, which has no accessible name to match on.
     this.submit = page.locator('input[type="submit"]');
   }
 

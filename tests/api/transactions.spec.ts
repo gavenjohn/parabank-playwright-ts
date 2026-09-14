@@ -1,6 +1,8 @@
 import { type APIRequestContext } from '@playwright/test';
 import { test, expect } from '../../src/fixtures/test-fixtures';
 import { transactionSchema, transactionsSchema } from '../../src/api/schemas';
+import { type AccountsOverviewPage } from '../../src/pages/accounts-overview.page';
+import { type OpenAccountPage } from '../../src/pages/open-account.page';
 
 const AMOUNT = 25;
 
@@ -11,13 +13,12 @@ function todayAsMMDDYYYY(): string {
   return `${mm}-${dd}-${now.getFullYear()}`;
 }
 
-// A fresh customer has no transaction history. Creates one real Debit
-// transaction via the API - not the UI - consistent with how customer data
-// is provisioned elsewhere in this suite.
+// Creates a transaction of a known amount to look up: opens a savings account
+// through the UI, then transfers AMOUNT into it over the API.
 async function createTransaction(
   request: APIRequestContext,
-  accountsOverviewPage: any,
-  openAccountPage: any,
+  accountsOverviewPage: AccountsOverviewPage,
+  openAccountPage: OpenAccountPage,
 ): Promise<string> {
   await accountsOverviewPage.goto();
   const fromAccountId = await accountsOverviewPage.firstAccountNumber();
@@ -39,8 +40,7 @@ test.describe('Transactions API', () => {
   }) => {
     const accountId = await createTransaction(request, accountsOverviewPage, openAccountPage);
 
-    // amount/{amount} is already covered by its own test below - reused
-    // here only to discover a real transaction id to verify against.
+    // Looked up by amount only to find a real id; that endpoint has its own test.
     const byAmount = await request.get(
       `/parabank/services/bank/accounts/${accountId}/transactions/amount/${AMOUNT}`,
       { headers: { Accept: 'application/json' } },
@@ -85,8 +85,7 @@ test.describe('Transactions API', () => {
   }) => {
     const accountId = await createTransaction(request, accountsOverviewPage, openAccountPage);
 
-    // Confirmed via manual testing: this endpoint expects MM-DD-YYYY, not
-    // the ISO format ParaBank uses in its own JSON responses.
+    // Undocumented: expects MM-DD-YYYY, although responses carry epoch millis.
     const response = await request.get(
       `/parabank/services/bank/accounts/${accountId}/transactions/onDate/${todayAsMMDDYYYY()}`,
       { headers: { Accept: 'application/json' } },
@@ -98,20 +97,19 @@ test.describe('Transactions API', () => {
   });
 
   test('GET transactions within a date range returns matching transactions', async ({
-  request, authedPage, accountsOverviewPage, openAccountPage,
-}) => {
-  const accountId = await createTransaction(request, accountsOverviewPage, openAccountPage);
-  const today = todayAsMMDDYYYY();
+    request, authedPage, accountsOverviewPage, openAccountPage,
+  }) => {
+    const accountId = await createTransaction(request, accountsOverviewPage, openAccountPage);
+    const today = todayAsMMDDYYYY();
 
-  // Confirmed via manual testing: fromDate and toDate are inclusive - a
-  // same-day range returns transactions created that day.
-  const response = await request.get(
-    `/parabank/services/bank/accounts/${accountId}/transactions/fromDate/${today}/toDate/${today}`,
-    { headers: { Accept: 'application/json' } },
-  );
+    // Both bounds are inclusive, so a same-day range covers today's transaction.
+    const response = await request.get(
+      `/parabank/services/bank/accounts/${accountId}/transactions/fromDate/${today}/toDate/${today}`,
+      { headers: { Accept: 'application/json' } },
+    );
 
-  expect(response.status()).toBe(200);
-  const result = transactionsSchema.safeParse(await response.json());
-  expect(result.success, JSON.stringify(result.success ? null : result.error.issues)).toBe(true);
-});
+    expect(response.status()).toBe(200);
+    const result = transactionsSchema.safeParse(await response.json());
+    expect(result.success, JSON.stringify(result.success ? null : result.error.issues)).toBe(true);
+  });
 });

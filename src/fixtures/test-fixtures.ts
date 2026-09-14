@@ -17,14 +17,12 @@ type Fixtures = {
 };
 
 export const test = base.extend<Fixtures>({
-  // ParaBank has no JSON registration endpoint, so this posts the registration
-  // form directly. Still no browser involved: ~200ms instead of ~6s of form
-  // filling, and it does not couple every test to the registration UI.
+  // Posts the registration form directly - ParaBank has no JSON registration
+  // endpoint. Faster than driving the page, and doesn't couple every test to it.
   registeredCustomer: async ({ request }, use) => {
     const customer = newCustomer();
 
-    // The POST binds against a form object created by this GET. Without it
-    // ParaBank returns a 500.
+    // Required: the POST binds to a form object this GET creates, and 500s without it.
     await request.get('/parabank/register.htm');
 
     const response = await request.post('/parabank/register.htm', {
@@ -43,8 +41,7 @@ export const test = base.extend<Fixtures>({
       },
     });
 
-    // ParaBank returns 200 on failure too, so the status alone proves nothing -
-    // the success text is the only reliable signal. See DEF-001.
+    // Rejections also return 200, so only the success text is reliable (DEF-001).
     const body = await response.text();
     expect(body, 'registration was rejected - see DEF-001').toContain(
       'Your account was created successfully',
@@ -57,7 +54,7 @@ export const test = base.extend<Fixtures>({
   accountsOverviewPage: async ({ page }, use) => use(new AccountsOverviewPage(page)),
   openAccountPage: async ({ page }, use) => use(new OpenAccountPage(page)),
   transferPage: async ({ page }, use) => use(new TransferPage(page)),
-  billPayPage: async ({ page }, use) => use(new BillPayPage(page)), 
+  billPayPage: async ({ page }, use) => use(new BillPayPage(page)),
 
   authedPage: async ({ page, registeredCustomer, loginPage }, use) => {
     await loginPage.goto();
