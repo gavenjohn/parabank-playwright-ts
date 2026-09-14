@@ -14,7 +14,7 @@ jobs:
           cache: npm
 
       - run: npm ci
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install --with-deps chromium firefox webkit
 
       # Typecheck before spending time on browsers and containers, so a type
       # error fails in seconds rather than after the whole suite has run.
