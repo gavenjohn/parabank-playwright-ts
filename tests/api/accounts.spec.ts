@@ -32,9 +32,16 @@ test.describe('Accounts API', () => {
     expect(body).toContain('Could not find account #999999');
   });
 
-  test('GET transactions for an account returns a well-formed list', async ({ request, authedPage, accountsOverviewPage }) => {
+  // A new customer's account has no transactions; opening a second account debits it,
+  // so there is a transaction to validate.
+  test('GET transactions for an account returns a well-formed list', async ({
+    request, authedPage, accountsOverviewPage, openAccountPage,
+  }) => {
     await accountsOverviewPage.goto();
     const accountId = await accountsOverviewPage.firstAccountNumber();
+
+    await openAccountPage.goto();
+    await openAccountPage.openSavings();
 
     const response = await request.get(
       `/parabank/services/bank/accounts/${accountId}/transactions/month/All/type/All`,
@@ -46,5 +53,6 @@ test.describe('Accounts API', () => {
     const body = await response.json();
     const result = transactionsSchema.safeParse(body);
     expect(result.success, JSON.stringify(result.success ? null : result.error.issues)).toBe(true);
+    expect(body.length).toBeGreaterThan(0);
   });
 });
