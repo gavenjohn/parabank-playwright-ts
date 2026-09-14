@@ -6,12 +6,9 @@ export default defineConfig({
   // Runs for local and CI runs alike, so the two cannot drift apart.
   globalSetup: './src/setup/global-setup.ts',
   fullyParallel: true,
-  workers: 1,  // Not a stopgap any more: ParaBank rejects concurrent registrations as
-               // "This username already exists" for usernames that are provably free,
-               // and every test registers a customer first. Measured at roughly one
-               // failure in six at six workers, landing on whichever test raced. See
-               // docs/defects/DEF-003. Serialising is the only fix available from the
-               // test side, since the defect is server-side.
+  workers: 1,  // ParaBank allocates ids with an unlocked read-then-update, so concurrent
+               // creates collide or deadlock (DEF-003). Reproduced at 2 and 4 workers;
+               // the defect is server-side, so serialising is the only fix from here.
   forbidOnly: !!process.env.CI,     // a stray test.only must not silently shrink the CI run
   retries: process.env.CI ? 1 : 0,  // one retry in CI surfaces flake in the report without
                                     // hiding it; zero locally so flake is visible while writing

@@ -1,75 +1,96 @@
-# DEF-003 — Concurrent registrations are rejected as "This username already exists"
+# DEF-003 — Concurrent writes fail intermittently; registration reports it as "This username already exists"
 
 **Severity:** High   **Priority:** Medium
-**Found:** while attempting to restore parallel test execution
-**Environment:** parasoft/parabank:latest, local Docker, freshly initialised database
+**Found:** while attempting to run the suite with more than one worker
+**Environment:** parasoft/parabank:latest, local Docker, HSQLDB as shipped in the image
 
 ## Summary
 
-When registration requests arrive concurrently, some are rejected with
-"This username already exists." for usernames that have never been registered. The
-rejected registration is not created, so a caller loses the request entirely.
+When customers or accounts are created concurrently, some requests fail. A failed
+registration is either rejected with "This username already exists." for a username that
+has never been used, or returns an error page. The customer is not created in either case,
+so the request is lost.
 
-## Steps
-1. Initialise the database (`GET /parabank/initializeDB.htm`) so no customers exist
-   beyond the seeded `john` and `parasoft`.
-2. Issue ten registration POSTs concurrently, each in its own session, with usernames
-   `par_1` … `par_10`. The names are fixed and distinct, so no collision is possible
-   by construction.
+## Reproducing
 
-## Expected
-All ten succeed. Every username is unique and none existed beforehand.
+Intermittent and timing-dependent. The most reliable reproduction is the suite itself,
+run in parallel against the container:
+
+```
+npx playwright test --workers=4
+```
+
+Observed on 14 September 2026, 22 tests across three browsers (66 executions per run):
+
+| Workers | Runs | Runs with failures | Unexpected failures |
+|---|---|---|---|
+| 1 | local run + CI runs #22–#25 | 0 | 0 |
+| 2 | 3 | 1 | 2 |
+| 4 | 6 | 2 | 3 |
+
+Concurrent registration without Playwright also triggers it, but less reliably: ten
+simultaneous POSTs, each in its own session, lost one registration on 7 September 2026;
+five rounds of ten on 14 September lost none.
 
 ## Actual
-Nine succeed. One — `par_1` — is rejected:
 
-```
-<span id="customer.username.errors" class="error">This username already exists.</span>
-```
+Three failure shapes, seen only under concurrency:
 
-The container log shows the application reaching that conclusion itself, rather than
-the message being a mis-mapped database error:
+1. **False duplicate username.** The registration form re-renders with
+   `This username already exists.` and the container logs
+   `WARN RegisterCustomerController - Username u_… already exists in database`.
+   The username cannot log in afterwards (verified for `par_1` on 7 September).
+2. **Error page on create.** Registration or Open New Account fails, and the container logs:
 
-```
-00:56:51.296 [http-nio-8080-exec-8]  JdbcCustomerDao - Getting customer object for id = 12434
-00:56:51.297 [http-nio-8080-exec-10] WARN RegisterCustomerController
-                                     - Username par_1 already exists in database
-```
+   ```
+   CannotAcquireLockException: PreparedStatementCallback;
+     SQL [INSERT INTO Account (id, customer_id, type, balance) VALUES (?, ?, ?, ?)]
+   Caused by: org.hsqldb.HsqlException: transaction rollback: serialization failure
+   ```
 
-`par_1` genuinely does not exist afterwards. Logging in with it fails:
+3. **Navigation that does not finish within five seconds**, after login or when opening
+   Accounts Overview, with nothing logged. Consistent with requests waiting on table
+   locks; not confirmed.
 
-| Username | Registration result | Login afterwards |
-|---|---|---|
-| `par_1` | rejected as duplicate | `could not be verified` |
-| `par_2` | created | Accounts Overview |
-| `par_5` | created | Accounts Overview |
+## Root cause
 
-So the duplicate check returned a false positive, and the customer was never created.
+Confirmed from the application's bytecode and configuration inside the image.
 
-## Analysis
+- **Ids are allocated with an unlocked read-then-update.** `JdbcSequenceDao.getNextId`
+  runs `SELECT next_id FROM Sequence WHERE name = ?`, then, as a separate statement,
+  `UPDATE Sequence SET next_id = ? WHERE name = ?`. Two transactions that both read before
+  either updates are given the same id.
+- **HSQLDB uses table-level two-phase locking.** The database is configured with
+  `SET DATABASE TRANSACTION CONTROL LOCKS` and `TRANSACTION ROLLBACK ON CONFLICT TRUE`, and
+  every `BankManager` method runs in a Spring transaction. Creating a customer updates
+  `Sequence` and inserts into `Customer` and `Account` in one transaction, so concurrent
+  writers can block each other; HSQLDB resolves the conflict by rolling one back with a
+  serialization failure. That is failure shape 2.
+- **Registration mislabels integrity failures.** `RegisterCustomerController.onSubmit`
+  wraps customer creation in `catch (DataIntegrityViolationException)` and reports every
+  such failure as `error.username.already.exists`, logging the warning above. It never
+  looks the username up. For a valid, never-used username, the constraint left to fail is
+  a primary key — which is what a duplicated id violates. That is failure shape 1. The
+  exception is swallowed, so the duplicate key is inferred, not observed.
 
-The false positive originates in the duplicate check, not in error reporting — the
-controller logs its own belief that the username exists. The behaviour is consistent
-with the lookup not being isolated from other in-flight registrations, for example a
-DAO whose connection or statement state is shared across request threads. The exact
-mechanism was not confirmed; what is confirmed is that the check reports a username as
-taken when it is not, and only under concurrency.
+An earlier version of this report attributed the false positive to a duplicate-username
+check that was not isolated between requests. That was wrong: no such check exists.
 
-This is distinct from [DEF-001](DEF-001-username-length-reported-as-duplicate.md),
-where the same message is produced deterministically by an over-length username. The
-shared symptom is that "This username already exists." is not reliable evidence that a
-username exists.
+[DEF-001](DEF-001-username-length-reported-as-duplicate.md) is the same mislabelling
+applied to a different integrity failure, an over-length username.
 
 ## Impact
 
-A customer registering at a busy moment is told to pick a different username, and the
-name they were told to abandon is still free. There is no retry or recovery: the
-request is simply lost.
+A customer who registers or opens an account while others are doing the same can be told
+their username is taken when it is free, or shown an error page, and the request is lost.
+Any real concurrency can trigger it; fewer simultaneous requests only make it rarer.
 
-For this suite it is the reason `workers` remains 1. Registration is the first thing
-every test does, so parallel execution fails roughly one test in six — and the failures
-land on whichever test happened to race, which reads as flake rather than as a product
-defect.
+For this suite it is why `workers` is 1. Every test registers a customer and several open
+accounts or move money, so parallel runs fail intermittently on whichever test lost the
+race, which reads as flake rather than as a product defect.
 
 ## Status
-Open. `workers: 1` in `playwright.config.ts` avoids it; see the comment there.
+
+Open, third-party application. Not encoded as a regression test: it is nondeterministic,
+so a test for it would be flaky by construction. `workers: 1` in `playwright.config.ts`
+avoids it; the defect is server-side, so serialising is the only test-side mitigation.

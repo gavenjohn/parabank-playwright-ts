@@ -2,7 +2,7 @@
 
 **Severity:** High   **Priority:** High
 **Found:** automated axe-core scan, `tests/a11y/accessibility.spec.ts`
-**Environment:** parasoft/parabank:latest, axe-core via @axe-core/playwright, chromium
+**Environment:** parasoft/parabank:latest, axe-core via @axe-core/playwright. Violation counts measured in Chromium; both regression tests fail as expected in Chromium, Firefox and WebKit.
 
 ## Summary
 

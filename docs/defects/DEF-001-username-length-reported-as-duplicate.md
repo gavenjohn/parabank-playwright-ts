@@ -35,11 +35,15 @@ username VARCHAR(20) NOT NULL,
 UNIQUE (username)
 ```
 
-The column is `VARCHAR(20)` and carries the `UNIQUE` constraint. An over-length
-username fails at the database, and the handler reports that failure using the
-message for the constraint it expected to be violated rather than the one that
-actually was. The boundary found by varying input length matches the declared
-column width exactly.
+The column is `VARCHAR(20)`, and the 20-character boundary found by varying input length
+matches it exactly.
+
+The misleading message comes from the registration controller, confirmed from its
+bytecode: `RegisterCustomerController.onSubmit` wraps customer creation in
+`catch (DataIntegrityViolationException)` and reports every such failure as
+`error.username.already.exists`. It never looks the username up. An over-length value is
+one integrity failure it mislabels; [DEF-003](DEF-003-concurrent-registration-false-duplicate.md)
+is another.
 
 ## What was ruled out
 - **Wrong field names** — the form echoes every submitted value back correctly.

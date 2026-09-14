@@ -2,18 +2,17 @@
 
 **Severity:** High   **Priority:** High
 **Found:** while building the funds-transfer test
-**Environment:** parasoft/parabank:latest, local Docker, Min. Balance $0.00
+**Environment:** parasoft/parabank:latest, local Docker
 
 ## Preconditions
 
-Min. Balance must be set to $0.00 on `/parabank/admin.htm` and saved. This is **not**
-the default: a freshly initialised database seeds `minimumBalance` at $100.00 from the
-image's own `insert.sql`. The setting is what makes the result unambiguous - at $0.00
-the resulting balance of -$84.50 is below the configured minimum on any reading, with
-no argument that the account was merely dipping into a permitted buffer.
+The manual steps below were run with Min. Balance set to $0.00 on `/parabank/admin.htm`.
+That is not the default — a freshly initialised database seeds $100.00, and the suite's
+`globalSetup` reinitialises it on every run — so reapply the setting before following them.
 
-Note that the suite's `globalSetup` reinitialises the database on every run, so this
-setting must be reapplied after running the tests in order to reproduce.
+The setting is not required to reproduce the defect. The regression test sets Min. Balance
+to $100.00, opens a second account (which moves $100), then transfers the original balance
+plus $50. The transfer is authorised and leaves the account at -$150.00.
 
 ## Steps
 1. Register a new customer. The initial account (14787) opens with $515.50.
@@ -51,4 +50,4 @@ A customer can move money they do not have. In a real banking context this is an
 unauthorised overdraft.
 
 ## Status
-Open.
+Open. Encoded as an expected failure in `tests/business-rules/min-balance.spec.ts`.
