@@ -22,8 +22,10 @@ test('a transfer exceeding the configured minimum balance is rejected', async ({
     const to = await openAccountPage.openSavings();
 
     // Exceeds both the funded account's balance and the configured minimum.
+    // submitTransfer, not transfer: a rejected transfer must reach the balance
+    // check, so a fix shows up as an unexpected pass.
     await transferPage.goto();
-    await transferPage.transfer(fromBefore + 50, from, to);
+    await transferPage.submitTransfer(fromBefore + 50, from, to);
 
     await accountsOverviewPage.goto();
     expect(await accountsOverviewPage.balanceOf(from)).toBeGreaterThanOrEqual(100);
