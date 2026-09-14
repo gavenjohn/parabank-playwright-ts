@@ -1,17 +1,15 @@
 import { test, expect } from '../../src/fixtures/test-fixtures';
-import { AdminPage } from '../../src/pages/admin.page';
 
 // DEF-002. Expected to fail: the transfer is authorised and leaves the account
 // below the configured minimum instead of being rejected.
 test('a transfer exceeding the configured minimum balance is rejected', async ({
-  authedPage, accountsOverviewPage, openAccountPage, transferPage,
+  authedPage, adminPage, accountsOverviewPage, openAccountPage, transferPage,
 }) => {
   test.fail();
 
-  const admin = new AdminPage(authedPage);
-  await admin.goto();
-  const originalMinimum = await admin.currentMinimumBalance();
-  await admin.setMinimumBalance('100');
+  await adminPage.goto();
+  const originalMinimum = await adminPage.currentMinimumBalance();
+  await adminPage.setMinimumBalance('100');
 
   try {
     await accountsOverviewPage.goto();
@@ -30,7 +28,7 @@ test('a transfer exceeding the configured minimum balance is rejected', async ({
     await accountsOverviewPage.goto();
     expect(await accountsOverviewPage.balanceOf(from)).toBeGreaterThanOrEqual(100);
   } finally {
-    await admin.goto();
-    await admin.setMinimumBalance(originalMinimum);
+    await adminPage.goto();
+    await adminPage.setMinimumBalance(originalMinimum);
   }
 });

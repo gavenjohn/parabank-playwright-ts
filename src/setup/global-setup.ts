@@ -1,29 +1,20 @@
 import { request } from '@playwright/test';
 
-// The parasoft/parabank image ships with an empty HSQLDB schema: db.script in
-// the container holds HSQLDB's own bootstrap and no application tables at all.
-// Without Parameter and Sequence, registration cannot allocate a customer id
-// and every page that reads a parameter returns 500.
-//
-// This runs as global setup rather than as a CI step so a local run and a CI
-// run do the same thing. The bug this fixes was exactly that divergence: the
-// local container had been initialised by hand on day one and kept the schema
-// in its writable layer ever since, while CI built a fresh container each run.
+// The image ships an empty HSQLDB schema: until it's created, registration can't
+// allocate ids and any page reading a parameter returns 500. Runs here rather than
+// as a CI step so local and CI runs are prepared identically - a hand-initialised
+// local container once hid exactly that difference.
 export default async function globalSetup() {
   const baseURL = process.env.BASE_URL ?? 'http://localhost:8080';
   const context = await request.newContext({ baseURL });
 
   try {
-    // Not db.htm, the admin page's Initialize button. That handler is preceded
-    // by a Spring @ModelAttribute method that reads the Parameter table to
-    // build the form, so on an empty schema it 500s before the INIT can run.
-    // initializeDB.htm binds no form, so it has nothing to read first.
+    // Not db.htm (the admin Initialize button): its @ModelAttribute reads the
+    // Parameter table first, so it 500s on an empty schema.
     await context.get('/parabank/initializeDB.htm');
 
-    // Prove the tables exist instead of trusting the status: initializeDB.htm
-    // redirects to the home page and would report success either way. admin.htm
-    // is the page that reads Parameter, and it is the exact request that
-    // returned 500 on a fresh container.
+    // initializeDB.htm redirects home whether or not it worked; admin.htm reads
+    // Parameter, so a 200 there proves the schema exists.
     const verification = await context.get('/parabank/admin.htm');
     if (!verification.ok()) {
       throw new Error(

@@ -11,7 +11,7 @@ test.describe('Login', () => {
 
   // A real customer with a wrong password: an unknown username returns the same
   // error, and would pass even if password checking were broken.
-  test('an invalid password is rejected with an error and no session is created', async ({
+  test('an invalid password is rejected and does not reach the accounts overview', async ({
     page, registeredCustomer, loginPage,
   }) => {
     await loginPage.goto();

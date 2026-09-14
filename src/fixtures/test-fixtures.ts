@@ -5,6 +5,7 @@ import { AccountsOverviewPage } from '../pages/accounts-overview.page';
 import { OpenAccountPage } from '../pages/open-account.page';
 import { TransferPage } from '../pages/transfer.page';
 import { BillPayPage } from '../pages/bill-pay.page';
+import { AdminPage } from '../pages/admin.page';
 
 type Fixtures = {
   registeredCustomer: Customer;
@@ -14,6 +15,7 @@ type Fixtures = {
   openAccountPage: OpenAccountPage;
   transferPage: TransferPage;
   billPayPage: BillPayPage;
+  adminPage: AdminPage;
 };
 
 export const test = base.extend<Fixtures>({
@@ -55,6 +57,7 @@ export const test = base.extend<Fixtures>({
   openAccountPage: async ({ page }, use) => use(new OpenAccountPage(page)),
   transferPage: async ({ page }, use) => use(new TransferPage(page)),
   billPayPage: async ({ page }, use) => use(new BillPayPage(page)),
+  adminPage: async ({ page }, use) => use(new AdminPage(page)),
 
   authedPage: async ({ page, registeredCustomer, loginPage }, use) => {
     await loginPage.goto();
